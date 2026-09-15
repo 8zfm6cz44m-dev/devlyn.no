@@ -450,16 +450,17 @@
       font-size: 1.3rem;
       font-weight: 600;
       text-decoration: none;
-      background: linear-gradient(135deg, var(--primary-light), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      border-bottom: 2px solid transparent;
-      background-image: linear-gradient(var(--bg-primary), var(--bg-primary)), linear-gradient(135deg, var(--primary-light), var(--accent));
-      background-origin: border-box;
-      background-clip: padding-box, border-box;
+      color: #ff6b9d;
+      display: inline-block;
+      border-bottom: 2px solid #ff6b9d;
       padding-bottom: 8px;
-      transition: transform 0.2s ease;
+      transition: all 0.2s ease;
+    }
+
+    .contact-email:hover {
+      color: #8b5fbf;
+      border-color: #8b5fbf;
+      transform: scale(1.05);
     }
 
     .contact-email:hover {
