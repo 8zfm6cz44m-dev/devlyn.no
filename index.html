@@ -590,46 +590,57 @@
 
 <section class="contact" id="kontakt">
   <div class="wrap">
-    <h2>Klar for å ta nettsiden deres til neste nivå?</h2>
-    <p>Send en e-post, så tar vi en uforpliktende prat om hvor dere står i dag og hva som kan gjøres.</p>
-    <a class="contact-email" href="mailto:hei@devlyn.no">hei@devlyn.no</a>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; align-items: start;">
+    <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start;">
+      <!-- Vänster sida: Text och kontaktinfo -->
       <div>
-        <h3 style="font-size: 1.1rem; margin-bottom: 20px; color: var(--text-secondary);">Kontaktinformasjon</h3>
-        <div style="space-y: 16px;">
-          <div style="margin-bottom: 24px;">
-            <div style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px;">E-post</div>
-            <a href="mailto:hei@devlyn.no" style="font-size: 1.1rem; color: #ff6b9d; text-decoration: none;">hei@devlyn.no</a>
+        <h2 style="margin-bottom: 32px;">Klar for å ta nettside deres til neste nivå?</h2>
+        <p style="margin-bottom: 32px; line-height: 1.7; font-size: 1.05rem;">Send en e-post eller ring oss, så tar vi en uforpliktende prat om hvor dere står i dag og hva som kan gjøres.</p>
+        
+        <blockquote style="border-left: 3px solid #ff6b9d; padding-left: 20px; margin: 32px 0; font-style: italic; color: var(--text-secondary); line-height: 1.6;">
+          "Vi tar ikke alle prosjekter. Hvis premissene ikke holder, sier vi fra tid."
+        </blockquote>
+
+        <div style="margin-top: 40px;">
+          <div style="margin-bottom: 32px;">
+            <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); margin-bottom: 8px; font-weight: 600;">E-POST</div>
+            <a href="mailto:hei@devlyn.no" style="font-size: 1.2rem; color: #ff6b9d; text-decoration: none; font-weight: 600;">hei@devlyn.no</a>
           </div>
-          <div style="margin-bottom: 24px;">
-            <div style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px;">Telefon</div>
-            <a href="tel:+4747925454" style="font-size: 1.1rem; color: #ff6b9d; text-decoration: none;">+47 479 25 454</a>
+          <div style="margin-bottom: 32px;">
+            <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); margin-bottom: 8px; font-weight: 600;">TELEFON</div>
+            <a href="tel:47925454" style="font-size: 1.2rem; color: #ff6b9d; text-decoration: none; font-weight: 600;">479 25 454</a>
           </div>
-          <div style="margin-bottom: 24px;">
-            <div style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px;">Organisasjonsnummer</div>
-            <div style="font-size: 1.1rem; color: var(--text-primary);">938 487 073</div>
+          <div>
+            <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); margin-bottom: 8px; font-weight: 600;">ORG.NR</div>
+            <div style="font-size: 1.2rem; color: var(--text-primary); font-weight: 600;">938 487 073</div>
           </div>
         </div>
       </div>
-      <form style="background: rgba(139, 95, 191, 0.05); padding: 32px; border-radius: 12px; border: 1px solid rgba(139, 95, 191, 0.1);">
+
+      <!-- Høyre sida: Kontaktformulär -->
+      <form style="background: rgba(139, 95, 191, 0.08); padding: 40px; border-radius: 12px; border: 1px solid rgba(139, 95, 191, 0.15);">
         <div style="margin-bottom: 24px;">
-          <label style="display: block; font-size: 0.9rem; margin-bottom: 8px; color: var(--text-secondary);">Navn</label>
-          <input type="text" name="navn" style="width: 100%; padding: 12px; border: 1px solid rgba(139, 95, 191, 0.2); border-radius: 6px; background: var(--bg-primary); color: var(--text-primary); font-family: inherit;" required>
+          <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; color: var(--text-primary);">Navn *</label>
+          <input type="text" name="navn" style="width: 100%; padding: 12px; border: 1px solid rgba(139, 95, 191, 0.2); border-radius: 6px; background: var(--bg-primary); color: var(--text-primary); font-family: inherit; font-size: 1rem;" required>
         </div>
+
         <div style="margin-bottom: 24px;">
-          <label style="display: block; font-size: 0.9rem; margin-bottom: 8px; color: var(--text-secondary);">E-post</label>
-          <input type="email" name="epost" style="width: 100%; padding: 12px; border: 1px solid rgba(139, 95, 191, 0.2); border-radius: 6px; background: var(--bg-primary); color: var(--text-primary); font-family: inherit;" required>
+          <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; color: var(--text-primary);">E-post *</label>
+          <input type="email" name="epost" style="width: 100%; padding: 12px; border: 1px solid rgba(139, 95, 191, 0.2); border-radius: 6px; background: var(--bg-primary); color: var(--text-primary); font-family: inherit; font-size: 1rem;" required>
         </div>
-        <div style="margin-bottom: 24px;">
-          <label style="display: block; font-size: 0.9rem; margin-bottom: 8px; color: var(--text-secondary);">Hva kan vi hjelpe med?</label>
-          <textarea name="melding" style="width: 100%; padding: 12px; border: 1px solid rgba(139, 95, 191, 0.2); border-radius: 6px; background: var(--bg-primary); color: var(--text-primary); font-family: inherit; min-height: 120px; resize: vertical;" placeholder="Beskriv kort hva du trenger hjelp til"></textarea>
+
+        <div style="margin-bottom: 32px;">
+          <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; color: var(--text-primary);">Hva jobber dere med? *</label>
+          <textarea name="melding" style="width: 100%; padding: 12px; border: 1px solid rgba(139, 95, 191, 0.2); border-radius: 6px; background: var(--bg-primary); color: var(--text-primary); font-family: inherit; min-height: 120px; resize: vertical; font-size: 1rem;" placeholder="Et par setninger om kontekst, problem eller idé." required></textarea>
         </div>
-        <button type="submit" style="background: linear-gradient(135deg, #8b5fbf, #ff6b9d); color: white; border: none; padding: 14px 28px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 1rem; width: 100%; transition: transform 0.2s ease;">Send melding</button>
-        <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 16px; line-height: 1.5;">Vi tar imot skjemaet og kontakter deg innen en arbeidsdag. Første samtale er alltid uforpliktende.</p>
+
+        <button type="submit" style="background: linear-gradient(135deg, #8b5fbf, #ff6b9d); color: white; border: none; padding: 14px 32px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 1rem; transition: transform 0.2s ease; width: 100%;">Send melding →</button>
+        
+        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 20px; line-height: 1.6;">Vi tar imot skjemaet og kontakter deg innen en arbeidsdag. Første samtale er alltid uforpliktende.</p>
       </form>
     </div>
   </div>
 </section>
+
 
 <footer class="wrap">
   <span>© 2026 Devlyn IT Tjenester Elofsson</span>
