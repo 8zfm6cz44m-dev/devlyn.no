@@ -619,18 +619,24 @@
       <!-- Høyre sida: Kontaktformulär -->
       <form style="background: rgba(139, 95, 191, 0.08); padding: 40px; border-radius: 12px; border: 1px solid rgba(139, 95, 191, 0.15);">
         <div style="margin-bottom: 24px;">
-          <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; color: var(--text-primary);">Navn *</label>
-          <input type="text" name="navn" style="width: 100%; padding: 12px; border: 1px solid rgba(139, 95, 191, 0.2); border-radius: 6px; background: var(--bg-primary); color: var(--text-primary); font-family: inherit; font-size: 1rem;" required>
+          <label style="display: flex; align-items: center; gap: 1rem; margin-bottom: 15px; font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">
+            <span style="min-width: 140px; text-align: left;">Navn *</span>
+          <input type="text" name="navn" style="flex: 1; width: 100%; padding: 12px; border: 1px solid rgba(139, 95, 191, 0.2); border-radius: 6px; background: var(--bg-primary); color: var(--text-primary); font-family: inherit; font-size: 1rem;" required>
+          </label>
         </div>
 
         <div style="margin-bottom: 24px;">
-          <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; color: var(--text-primary);">E-post *</label>
-          <input type="email" name="epost" style="width: 100%; padding: 12px; border: 1px solid rgba(139, 95, 191, 0.2); border-radius: 6px; background: var(--bg-primary); color: var(--text-primary); font-family: inherit; font-size: 1rem;" required>
+          <label style="display: flex; align-items: center; gap: 1rem; margin-bottom: 15px; font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">
+            <span style="min-width: 140px; text-align: left;">E-post *</span>
+          <input type="email" name="epost" style="flex: 1; width: 100%; padding: 12px; border: 1px solid rgba(139, 95, 191, 0.2); border-radius: 6px; background: var(--bg-primary); color: var(--text-primary); font-family: inherit; font-size: 1rem;" required>
+          </label>
         </div>
 
         <div style="margin-bottom: 32px;">
-          <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; color: var(--text-primary);">Hva jobber dere med? *</label>
-          <textarea name="melding" style="width: 100%; padding: 12px; border: 1px solid rgba(139, 95, 191, 0.2); border-radius: 6px; background: var(--bg-primary); color: var(--text-primary); font-family: inherit; min-height: 120px; resize: vertical; font-size: 1rem;" placeholder="Et par setninger om kontekst, problem eller idé." required></textarea>
+          <label style="display: flex; align-items: center; gap: 1rem; margin-bottom: 15px; font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">
+            <span style="min-width: 140px; text-align: left;">Hva jobber dere med? *</span>
+          <textarea name="melding" style="flex: 1; width: 100%; padding: 12px; border: 1px solid rgba(139, 95, 191, 0.2); border-radius: 6px; background: var(--bg-primary); color: var(--text-primary); font-family: inherit; min-height: 120px; resize: vertical; font-size: 1rem;" placeholder="Et par setninger om kontekst, problem eller idé." required>
+          </label></textarea>
         </div>
 
         <button type="submit" style="background: linear-gradient(135deg, #8b5fbf, #ff6b9d); color: white; border: none; padding: 14px 32px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 1rem; transition: transform 0.2s ease; width: 100%;">Send melding →</button>
