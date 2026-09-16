@@ -617,7 +617,7 @@
       </div>
 
       <!-- Høyre sida: Kontaktformulär -->
-      <form style="background: rgba(139, 95, 191, 0.08); padding: 40px; border-radius: 12px; border: 1px solid rgba(139, 95, 191, 0.15);">
+      <form id="contactForm" method="POST" action="https://formspree.io/f/xjkbnoqd" style="background: rgba(139, 95, 191, 0.08); padding: 40px; border-radius: 12px; border: 1px solid rgba(139, 95, 191, 0.15);">
         <div style="margin-bottom: 24px;">
           <label style="display: flex; align-items: center; gap: 1rem; margin-bottom: 15px; font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">
             <span style="min-width: 140px; text-align: left;">Navn *</span>
@@ -662,24 +662,33 @@
   document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
-    // Visa bekräftelse
-    document.getElementById('successMessage').style.display = 'block';
+    const form = this;
+    const formData = new FormData(form);
     
-    // Optionellt: Skicka till en backend-tjänst här
-    // För nu loggas bara i console
-    console.log({
-      namn: this.navn.value,
-      epost: this.epost.value,
-      melding: this.melding.value
+    // Skicka via Formspree
+    fetch('https://formspree.io/f/xjkbnoqd', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        // Visa bekräftelse
+        document.getElementById('successMessage').style.display = 'block';
+        form.reset();
+        
+        // Göm bekräftelse efter 5 sekunder
+        setTimeout(() => {
+          document.getElementById('successMessage').style.display = 'none';
+        }, 5000);
+      }
+    })
+    .catch(error => {
+      console.error('Fel ved sending:', error);
+      alert('Noe gikk galt. Prøv igjen eller kontakt oss på hei@devlyn.no');
     });
-    
-    // Rensa formuläret
-    this.reset();
-    
-    // Göm bekräftelse efter 5 sekunder
-    setTimeout(() => {
-      document.getElementById('successMessage').style.display = 'none';
-    }, 5000);
   });
 </script>
 
