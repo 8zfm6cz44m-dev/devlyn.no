@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devlyn — Nettsider, SEO &amp; IT-konsulent i Oslo</title>
+  <meta name="description" content="Devlyn leverer digitale løsninger som tåler etterprøving — nettsider, SEO og IT-rådgivning for små og mellomstore bedrifter i Oslo.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    :root {
+      --ink: #17140f;
+      --paper: #f5efe4;
+      --paper-2: #ece3d2;
+      --rust: #b5502e;
+      --rust-dark: #8a3c22;
+      --line: #d9cdb5;
+      --muted: #6b6154;
+      --green: #4f7a52;
+      --amber: #b5842e;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .wrap { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+
+    header {
+      position: sticky; top: 0; z-index: 30;
+      background: rgba(245, 239, 228, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 0; gap: 20px;
+    }
+
+    .logo {
+      display: flex; flex-direction: column; text-decoration: none; color: var(--ink);
+      line-height: 1.1;
+    }
+
+    .logo b {
+      font-family: 'Fraunces', serif;
+      font-weight: 600; font-size: 1.5rem; letter-spacing: -0.01em;
+    }
+
+    .logo span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted); margin-top: 2px;
+    }
+
+    nav.nav-links { display: flex; align-items: center; gap: 30px; }
+
+    nav.nav-links a {
+      font-size: 0.86rem; text-decoration: none; color: var(--ink);
+      font-weight: 500;
+    }
+
+    nav.nav-links a.muted { color: var(--muted); }
+
+    .cta-btn {
+      border: 1.5px solid var(--ink);
+      padding: 9px 18px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--ink);
+      transition: all 0.2s ease;
+    }
+
+    .cta-btn:hover { background: var(--ink); color: var(--paper); }
+
+    @media (max-width: 760px) { nav.nav-links { display: none; } }
+
+    section { padding: 90px 0; border-bottom: 1px solid var(--line); }
+    section:last-of-type { border-bottom: none; }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--rust); margin-bottom: 26px; display: flex; align-items: center; gap: 10px;
+    }
+
+    .eyebrow::before { content: ""; width: 7px; height: 7px; background: var(--rust); display: inline-block; }
+
+    .hero { padding: 110px 0 100px; }
+
+    .hero-grid {
+      display: grid; grid-template-columns: 1.25fr 1fr; gap: 64px; align-items: start;
+    }
+
+    @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
+
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: clamp(2.2rem, 4.6vw, 3.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+      margin: 0 0 26px;
+      max-width: 15ch;
+    }
+
+    .hero p.lead {
+      font-size: 1.12rem; color: var(--muted); max-width: 46ch; margin: 0 0 36px;
+    }
+
+    .hero-actions { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+
+    .btn-primary {
+      background: var(--ink); color: var(--paper);
+      padding: 15px 26px; text-decoration: none; font-weight: 600; font-size: 0.96rem;
+      border: none; cursor: pointer; transition: background 0.2s ease;
+    }
+
+    .btn-primary:hover { background: var(--rust-dark); }
+
+    .btn-text {
+      font-size: 0.96rem; font-weight: 600; text-decoration: underline;
+      text-underline-offset: 4px; color: var(--ink);
+    }
+
+    .evidence-card {
+      border: 1px solid var(--ink);
+      background: var(--paper-2);
+      padding: 28px;
+    }
+
+    .evidence-card .ev-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--muted); margin-bottom: 20px; display: flex; justify-content: space-between;
+    }
+
+    .evidence-row {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 14px 0; border-top: 1px solid var(--line);
+      font-size: 0.92rem;
+    }
+
+    .evidence-row:first-of-type { border-top: none; }
+
+    .dot { width: 9px; height: 9px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+    .dot.g { background: var(--green); }
+    .dot.a { background: var(--amber); }
+
+    .section-head {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      gap: 24px; margin-bottom: 56px; flex-wrap: wrap;
+    }
+
+    h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      letter-spacing: -0.01em; margin: 0;
+    }
+
+    .section-sub { color: var(--muted); max-width: 36ch; font-size: 0.98rem; margin: 0; }
+
+    .ledger { border-top: 1px solid var(--ink); }
+
+    .ledger-item {
+      display: grid;
+      grid-template-columns: 90px 1.4fr 1fr;
+      gap: 32px;
+      padding: 34px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+    }
+
+    @media (max-width: 760px) {
+      .ledger-item { grid-template-columns: 1fr; gap: 10px; }
+    }
+
+    .ledger-num {
+      font-family: 'Fraunces', serif; font-weight: 500;
+      font-size: 1.6rem; color: var(--rust);
+    }
+
+    .ledger-item h3 {
+      font-family: 'Fraunces', serif; font-weight: 500;
+      font-size: 1.25rem; margin: 0 0 10px;
+    }
+
+    .ledger-item p { color: var(--muted); margin: 0; font-size: 0.96rem; }
+
+    .ledger-tag {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted);
+      align-self: start; padding-top: 6px;
+    }
+
+    .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: start; }
+    @media (max-width: 780px) { .about-grid { grid-template-columns: 1fr; } }
+
+    .quote-mark {
+      font-family: 'Fraunces', serif; font-size: 4rem; color: var(--rust);
+      line-height: 0.6; margin-bottom: 6px; display: block;
+    }
+
+    .about-grid p.body-text { font-size: 1.08rem; color: var(--ink); max-width: 54ch; }
+
+    .stat-strip { border-top: 2px solid var(--ink); padding-top: 22px; display: flex; flex-direction: column; gap: 22px; }
+
+    .stat-strip div b {
+      display: block; font-family: 'Fraunces', serif; font-weight: 500;
+      font-size: 1.25rem; color: var(--ink);
+    }
+
+    .stat-strip div span { color: var(--muted); font-size: 0.9rem; }
+
+    .contact { text-align: left; padding: 100px 0 96px; }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 64px; align-items: start; }
+    @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    .contact h2 { max-width: 16ch; margin-bottom: 20px; }
+
+    blockquote.pull {
+      border-left: 2px solid var(--rust);
+      padding-left: 22px; margin: 34px 0;
+      font-family: 'Fraunces', serif; font-style: italic; font-size: 1.15rem;
+      color: var(--ink); line-height: 1.5;
+    }
+
+    .contact-detail { margin-bottom: 26px; }
+    .contact-detail .label {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+      text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 6px;
+    }
+    .contact-detail a, .contact-detail .val { font-size: 1.15rem; font-weight: 600; text-decoration: none; color: var(--rust-dark); }
+
+    form label {
+      display: block; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--muted); margin-bottom: 8px;
+    }
+
+    .field { margin-bottom: 22px; }
+
+    input, textarea {
+      width: 100%; padding: 13px 14px; border: 1px solid var(--ink);
+      background: var(--paper-2); color: var(--ink); font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+    }
+
+    textarea { min-height: 130px; resize: vertical; }
+
+    #successMessage {
+      display: none; margin-bottom: 20px; padding: 14px 16px;
+      background: #e4ede4; border: 1px solid var(--green); color: #2f4d31; font-size: 0.92rem;
+    }
+
+    button[type="submit"] {
+      background: var(--ink); color: var(--paper); border: none;
+      padding: 15px 30px; font-weight: 600; font-size: 0.98rem; cursor: pointer;
+      width: 100%; transition: background 0.2s ease;
+    }
+
+    button[type="submit"]:hover { background: var(--rust-dark); }
+
+    .form-note { font-size: 0.85rem; color: var(--muted); margin-top: 18px; line-height: 1.6; }
+
+    footer {
+      padding: 30px 0 90px; text-align: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="logo" href="./">
+      <b>Devlyn</b>
+      <span>Web &amp; IT-konsulent · Oslo</span>
+    </a>
+    <nav class="nav-links">
+      <a class="muted" href="#tjenester">Tjenester</a>
+      <a class="muted" href="#om-oss">Om oss</a>
+      <a class="cta-btn" href="#kontakt">Ta kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Oslo · Web &amp; IT-konsulent</span>
+      <h1>Digitale løsninger som tåler et nærmere blikk.</h1>
+      <p class="lead">Devlyn kombinerer 18+ års erfaring fra digital drift og telekom med moderne webutvikling — alltid med en tydelig plan for hva som gjøres, og hvorfor.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="mailto:hei@devlyn.no?subject=Gratis%20digital%20analyse">Få en gratis digital analyse</a>
+        <a class="btn-text" href="#tjenester">Se hva vi tilbyr →</a>
+      </div>
+    </div>
+    <div class="evidence-card">
+      <div class="ev-title"><span>STATUS</span><span>OPPDATERT 2026</span></div>
+      <div class="evidence-row"><span class="dot g"></span><span>Oslo-basert, jobber med kunder i hele Norge</span></div>
+      <div class="evidence-row"><span class="dot g"></span><span>18+ års erfaring fra digital drift og telekom</span></div>
+      <div class="evidence-row"><span class="dot a"></span><span>Første analyse er alltid gratis og uforpliktende</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="tjenester">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Tjenester</h2>
+      <p class="section-sub">Alt en bedrift trenger for å bli funnet og valgt.</p>
+    </div>
+    <div class="ledger">
+      <div class="ledger-item">
+        <div class="ledger-num">01</div>
+        <div>
+          <h3>Nettsider som konverterer</h3>
+          <p>Skreddersydde nettsider og bestillingsløsninger bygget for å gi flere henvendelser og bestillinger — ikke bare pynt på nett.</p>
+        </div>
+        <div class="ledger-tag">Nettsider &amp; bestilling</div>
+      </div>
+      <div class="ledger-item">
+        <div class="ledger-num">02</div>
+        <div>
+          <h3>Bli funnet på Google</h3>
+          <p>Teknisk SEO, lokal søkeoptimalisering og innhold som faktisk rangerer, tilpasset hvordan kundene deres søker.</p>
+        </div>
+        <div class="ledger-tag">SEO &amp; synlighet</div>
+      </div>
+      <div class="ledger-item">
+        <div class="ledger-num">03</div>
+        <div>
+          <h3>Fremtidssikret synlighet</h3>
+          <p>Optimalisering for AI-søk og -assistenter, pluss automatisering av tidkrevende oppgaver i hverdagen.</p>
+        </div>
+        <div class="ledger-tag">AI-optimalisering</div>
+      </div>
+      <div class="ledger-item">
+        <div class="ledger-num">04</div>
+        <div>
+          <h3>En erfaren teknisk partner</h3>
+          <p>Rådgivning og gjennomføring for bedrifter som ønsker en partner som forstår helheten, ikke bare en leverandør.</p>
+        </div>
+        <div class="ledger-tag">IT-konsulting</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="om-oss">
+  <div class="wrap about-grid">
+    <div>
+      <span class="quote-mark">"</span>
+      <p class="body-text">Devlyn er et Oslo-basert IT- og konsulentselskap som kombinerer solid erfaring fra digital leveranse og telekom med moderne webutvikling. Vi jobber tett med hver enkelt kunde — ingen ferdigpakker, ingen bortforklaringer, og alltid en tydelig plan for hva som skal gjøres og hvorfor.</p>
+    </div>
+    <div class="stat-strip">
+      <div><b>Oslo</b><span>Basert i Oslo, jobber med kunder i hele Norge</span></div>
+      <div><b>Nettsider · SEO</b><span>For bedrifter som vil bli funnet og valgt online</span></div>
+      <div><b>Gratis analyse</b><span>Alltid en uforpliktende digital analyse først</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="kontakt">
+  <div class="wrap contact-grid">
+    <div>
+      <h2>Klar for å ta et nærmere blikk på nettsiden deres?</h2>
+      <blockquote class="pull">Vi fokuserer på reell forretningsverdi — løsninger som skaper målbar effekt for dine kunder og virksomheten.</blockquote>
+      <div class="contact-detail">
+        <div class="label">E-post</div>
+        <a href="mailto:hei@devlyn.no">hei@devlyn.no</a>
+      </div>
+      <div class="contact-detail">
+        <div class="label">Telefon</div>
+        <a href="tel:47925454">479 25 454</a>
+      </div>
+      <div class="contact-detail">
+        <div class="label">Org.nr</div>
+        <div class="val" style="color: var(--ink);">938 487 073</div>
+      </div>
+    </div>
+
+    <form id="contactForm" method="POST" action="https://formspree.io/f/xoevaywb">
+      <div id="successMessage">✓ Takk! Vi mottar meldingen din og kontakter deg snart.</div>
+
+      <div class="field">
+        <label for="navn">Navn *</label>
+        <input type="text" id="navn" name="navn" required>
+      </div>
+      <div class="field">
+        <label for="epost">E-post *</label>
+        <input type="email" id="epost" name="epost" required>
+      </div>
+      <div class="field">
+        <label for="melding">Hva jobber dere med? *</label>
+        <textarea id="melding" name="melding" placeholder="Et par setninger om kontekst, problem eller idé." required></textarea>
+      </div>
+      <button type="submit">Send melding →</button>
+      <p class="form-note">Vi tar imot skjemaet og kontakter deg innen en arbeidsdag. Første samtale er alltid uforpliktende.</p>
+    </form>
+  </div>
+</section>
+
+<footer class="wrap">© 2026 Devlyn</footer>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = this;
+    const formData = new FormData(form);
+    fetch('https://formspree.io/f/xoevaywb', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+      if (response.ok) {
+        document.getElementById('successMessage').style.display = 'block';
+        form.reset();
+        setTimeout(() => { document.getElementById('successMessage').style.display = 'none'; }, 5000);
+      }
+    })
+    .catch(error => {
+      console.error('Fel ved sending:', error);
+      alert('Noe gikk galt. Prøv igjen eller kontakt oss på hei@devlyn.no');
+    });
+  });
+</script>
+
+<div style="position: fixed; bottom: 18px; left: 18px; z-index: 100; display: flex; gap: 6px; background: rgba(245,239,228,0.95); border: 1px solid #17140f; padding: 6px; font-family: 'JetBrains Mono', monospace;">
+  <a href="../" style="font-size: 0.72rem; color: #6b6154; text-decoration: none; padding: 6px 10px;">Alle versjoner</a>
+  <a href="../1/" style="font-size: 0.72rem; color: #6b6154; text-decoration: none; padding: 6px 10px;">1</a>
+  <a href="../2/" style="font-size: 0.72rem; color: #f5efe4; background: #17140f; text-decoration: none; padding: 6px 10px; font-weight: 600;">2</a>
+  <a href="../3/" style="font-size: 0.72rem; color: #6b6154; text-decoration: none; padding: 6px 10px;">3</a>
+</div>
+
+</body>
+</html>
