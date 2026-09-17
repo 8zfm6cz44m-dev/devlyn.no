@@ -20,15 +20,16 @@
       justify-content: center;
       padding: 40px 20px;
     }
-    .wrap { max-width: 980px; width: 100%; }
+    .wrap { max-width: 1180px; width: 100%; }
     h1 { font-size: 1.6rem; margin: 0 0 8px; }
     p.sub { color: #a3a19c; margin: 0 0 44px; font-size: 1rem; }
     .cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
     }
-    @media (max-width: 800px) { .cards { grid-template-columns: 1fr; } }
+    @media (max-width: 1000px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
     .card {
       display: block;
       text-decoration: none;
@@ -48,8 +49,8 @@
 </head>
 <body>
   <div class="wrap">
-    <h1>Devlyn — tre retninger</h1>
-    <p class="sub">Samme innhold, tre ulike visuelle uttrykk. Velg en å se nærmere på.</p>
+    <h1>Devlyn — fire retninger</h1>
+    <p class="sub">Samme innhold, fire ulike visuelle uttrykk. Velg en å se nærmere på.</p>
     <div class="cards">
       <a class="card" href="1/">
         <span class="num">Versjon 1</span>
@@ -79,6 +80,15 @@
           <span class="swatch" style="background:#0d1210"></span>
           <span class="swatch" style="background:#c9a45c"></span>
           <span class="swatch" style="background:#f3f1ea"></span>
+        </div>
+      </a>
+      <a class="card" href="4/">
+        <span class="num">Versjon 4</span>
+        <h2>Skarpt</h2>
+        <p>Inspirert av f4.no. Svart/hvitt, ingen farger, stor grotesk-typografi, numrert liste, rett på sak.</p>
+        <div class="swatches">
+          <span class="swatch" style="background:#f7f6f2;border:1px solid #333"></span>
+          <span class="swatch" style="background:#0a0a0a"></span>
         </div>
       </a>
     </div>
