@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="no">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,13 +22,8 @@
       --line: #3d2f5c;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -40,26 +35,11 @@
       min-height: 100vh;
     }
 
-    .mono {
-      font-family: 'IBM Plex Mono', ui-monospace, monospace;
-      letter-spacing: 0.04em;
-    }
+    .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; letter-spacing: 0.04em; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .wrap {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
     header {
       position: sticky;
@@ -70,439 +50,156 @@
       border-bottom: 1px solid var(--line);
     }
 
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 0;
-      gap: 16px;
-    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; gap: 16px; }
 
-    .logo {
-      font-weight: 700;
-      font-size: 1.35rem;
-      letter-spacing: -0.01em;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--text-primary);
-    }
+    .logo { font-weight: 700; font-size: 1.35rem; letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; color: var(--text-primary); }
+    .logo-mark { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+    .logo-mark svg { width: 100%; height: 100%; }
+    .logo span { background: linear-gradient(135deg, var(--primary-light), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
-    .logo-mark {
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .logo-mark svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .logo span {
-      background: linear-gradient(135deg, var(--primary-light), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    nav {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-    }
-
-    nav a {
-      font-size: 0.92rem;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: var(--primary-light);
-    }
+    nav { display: flex; gap: 26px; align-items: center; }
+    nav a { font-size: 0.92rem; color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease; }
+    nav a:hover { color: var(--primary-light); }
 
     .cta-btn {
       background: linear-gradient(135deg, var(--primary-light), var(--accent));
-      color: #fff;
-      padding: 10px 18px;
-      border-radius: 8px;
-      font-size: 0.92rem;
-      font-weight: 600;
-      text-decoration: none;
-      white-space: nowrap;
-      display: inline-block;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      cursor: pointer;
+      color: #fff; padding: 10px 18px; border-radius: 8px; font-size: 0.92rem; font-weight: 600;
+      text-decoration: none; white-space: nowrap; display: inline-block;
+      transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer;
     }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(107, 63, 160, 0.3); }
 
-    .cta-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(107, 63, 160, 0.3);
-    }
+    .nav-links { display: flex; }
+    @media (max-width: 860px) { .nav-links { display: none; } }
 
-    .nav-links {
-      display: flex;
-    }
-
-    @media (max-width: 760px) {
-      .nav-links {
-        display: none;
-      }
-    }
-
-    .hero {
-      padding: 120px 0 100px;
-      border-bottom: 1px solid var(--line);
-      position: relative;
-      overflow: hidden;
-    }
-
+    .hero { padding: 108px 0 96px; border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
     .hero::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      right: -10%;
-      width: 600px;
-      height: 600px;
+      content: ""; position: absolute; top: -50%; right: -10%; width: 600px; height: 600px;
       background: radial-gradient(circle, rgba(107, 63, 160, 0.15) 0%, transparent 70%);
-      border-radius: 50%;
-      z-index: 1;
-      pointer-events: none;
+      border-radius: 50%; z-index: 1; pointer-events: none;
     }
+    .hero .wrap { position: relative; z-index: 2; }
 
-    .hero .wrap {
-      position: relative;
-      z-index: 2;
-    }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: center; }
+    @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } .hero-illustration { order: -1; max-width: 280px; margin: 0 auto 8px; } }
 
     .eyebrow {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      margin-bottom: 22px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      letter-spacing: 0.1em;
+      font-size: 0.78rem; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 22px;
+      display: inline-flex; align-items: center; gap: 10px; letter-spacing: 0.1em;
     }
-
-    .eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      display: inline-block;
-    }
+    .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: inline-block; }
 
     h1 {
-      font-size: clamp(2.3rem, 5vw, 3.8rem);
-      line-height: 1.06;
-      letter-spacing: -0.02em;
-      margin: 0 0 24px;
-      max-width: 16ch;
-      text-wrap: balance;
+      font-size: clamp(2.2rem, 4.6vw, 3.5rem); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 24px;
+      max-width: 17ch; text-wrap: balance;
       background: linear-gradient(135deg, var(--text-primary), var(--primary-light));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
-    .hero p.lead {
-      font-size: 1.2rem;
-      color: var(--text-secondary);
-      max-width: 52ch;
-      margin: 0 0 36px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
+    .hero p.lead { font-size: 1.15rem; color: var(--text-secondary); max-width: 52ch; margin: 0 0 36px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary-light), var(--accent));
-      color: #fff;
-      padding: 14px 26px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      border: none;
+      background: linear-gradient(135deg, var(--primary-light), var(--accent)); color: #fff; padding: 14px 26px;
+      border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease; border: none;
     }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(107, 63, 160, 0.4);
-    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(107, 63, 160, 0.4); }
 
     .btn-secondary {
-      padding: 14px 22px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      color: var(--text-primary);
-      border: 1px solid var(--line);
-      cursor: pointer;
-      background: transparent;
+      padding: 14px 22px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem;
+      color: var(--text-primary); border: 1px solid var(--line); cursor: pointer; background: transparent;
       transition: all 0.2s ease;
     }
+    .btn-secondary:hover { border-color: var(--primary-light); background: rgba(107, 63, 160, 0.1); }
 
-    .btn-secondary:hover {
-      border-color: var(--primary-light);
-      background: rgba(107, 63, 160, 0.1);
-    }
+    section { padding: 76px 0; border-bottom: 1px solid var(--line); }
+    section:last-of-type { border-bottom: none; }
 
-    section {
-      padding: 76px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    section:last-of-type {
-      border-bottom: none;
-    }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 24px;
-      margin-bottom: 48px;
-      flex-wrap: wrap;
-    }
+    .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 48px; flex-wrap: wrap; }
 
     h2 {
-      font-size: clamp(1.7rem, 3vw, 2.3rem);
-      letter-spacing: -0.015em;
-      margin: 0;
-      text-wrap: balance;
+      font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.015em; margin: 0; text-wrap: balance;
       background: linear-gradient(135deg, var(--text-primary), var(--primary-light));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-
-    .section-sub {
-      color: var(--text-secondary);
-      max-width: 38ch;
-      font-size: 1rem;
-      margin: 0;
-    }
+    .section-sub { color: var(--text-secondary); max-width: 38ch; font-size: 1rem; margin: 0; }
 
     .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      overflow: hidden;
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line);
+      border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+    }
+    @media (max-width: 700px) { .services-grid { grid-template-columns: 1fr; } }
+
+    .service-card { background: var(--bg-secondary); padding: 32px; transition: all 0.3s ease; border: 1px solid rgba(107, 63, 160, 0.2); }
+    .service-card:hover { background: var(--bg-tertiary); border-color: var(--primary-light); box-shadow: inset 0 0 24px rgba(107, 63, 160, 0.1); }
+    .service-tag { font-size: 0.72rem; color: var(--accent); margin-bottom: 16px; display: block; font-weight: 600; }
+    .service-card h3 { font-size: 1.15rem; margin: 0 0 10px; letter-spacing: -0.01em; }
+    .service-card p { color: var(--text-secondary); margin: 0; font-size: 0.96rem; }
+
+    .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: start; }
+    @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-grid p { font-size: 1.05rem; color: var(--text-secondary); max-width: 56ch; }
+
+    .stat-list { display: flex; flex-direction: column; gap: 22px; border-left: 2px solid var(--primary-light); padding-left: 24px; }
+    .stat-list div b { display: block; font-size: 1.4rem; letter-spacing: -0.01em; color: var(--primary-light); }
+    .stat-list div span { color: var(--text-secondary); font-size: 0.9rem; }
+
+    /* Grunnlegger / founder section */
+    .founder-grid { display: grid; grid-template-columns: 240px 1fr; gap: 52px; align-items: start; }
+    @media (max-width: 760px) { .founder-grid { grid-template-columns: 1fr; justify-items: center; text-align: center; } }
+
+    .avatar-wrap { position: relative; width: 200px; height: 200px; }
+    @media (max-width: 760px) { .avatar-wrap { width: 168px; height: 168px; } }
+    .avatar-ring {
+      position: absolute; inset: -10px; border-radius: 50%;
+      background: conic-gradient(from 140deg, var(--primary-light), var(--accent), var(--primary-light));
+      opacity: 0.55; filter: blur(2px);
+    }
+    .avatar {
+      position: relative; width: 200px; height: 200px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; font-weight: 700; color: #fff; letter-spacing: -0.02em;
+      border: 3px solid var(--bg-primary);
+    }
+    @media (max-width: 760px) { .avatar, .avatar-wrap > .avatar { width: 168px; height: 168px; font-size: 2.4rem; } }
+    .avatar-note {
+      margin-top: 14px; font-size: 0.72rem; color: var(--text-secondary); max-width: 200px;
+      font-family: 'IBM Plex Mono', ui-monospace, monospace; opacity: 0.7;
     }
 
-    @media (max-width: 700px) {
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+    .founder-name { font-size: 1.5rem; font-weight: 700; margin: 0 0 4px; letter-spacing: -0.01em; }
+    .founder-role { color: var(--accent); font-size: 0.9rem; font-weight: 600; margin: 0 0 20px; }
+    .founder-bio { color: var(--text-secondary); font-size: 1.03rem; max-width: 58ch; margin: 0 0 28px; }
 
-    .service-card {
+    .bring-list { list-style: none; padding: 0; margin: 0 0 30px; display: flex; flex-direction: column; gap: 12px; }
+    .bring-list li { display: flex; align-items: flex-start; gap: 12px; color: var(--text-secondary); font-size: 0.98rem; }
+    .bring-list li::before { content: "✓"; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    @media (max-width: 760px) { .skills { justify-content: center; } }
+    .skill-tag {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.76rem; letter-spacing: 0.03em;
+      padding: 7px 13px; border-radius: 20px; border: 1px solid var(--line); color: var(--text-secondary);
       background: var(--bg-secondary);
-      padding: 32px;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(107, 63, 160, 0.2);
     }
 
-    .service-card:hover {
-      background: var(--bg-tertiary);
-      border-color: var(--primary-light);
-      box-shadow: inset 0 0 24px rgba(107, 63, 160, 0.1);
-    }
-
-    .service-tag {
-      font-size: 0.72rem;
-      color: var(--accent);
-      margin-bottom: 16px;
-      display: block;
-      font-weight: 600;
-    }
-
-    .service-card h3 {
-      font-size: 1.15rem;
-      margin: 0 0 10px;
-      letter-spacing: -0.01em;
-    }
-
-    .service-card p {
-      color: var(--text-secondary);
-      margin: 0;
-      font-size: 0.96rem;
-    }
-
-    .process {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 28px;
-    }
-
-    @media (max-width: 820px) {
-      .process {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .process {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .step {
-      position: relative;
-      padding-top: 8px;
-    }
-
-    .step-num {
-      font-size: 0.85rem;
-      color: var(--accent);
-      margin-bottom: 14px;
-      display: block;
-      font-weight: 600;
-    }
-
-    .step h3 {
-      font-size: 1.02rem;
-      margin: 0 0 8px;
-      letter-spacing: -0.005em;
-    }
-
-    .step p {
-      color: var(--text-secondary);
-      font-size: 0.92rem;
-      margin: 0;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      gap: 56px;
-      align-items: start;
-    }
-
-    @media (max-width: 760px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .about-grid p {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      max-width: 56ch;
-    }
-
-    .stat-list {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-      border-left: 2px solid var(--primary-light);
-      padding-left: 24px;
-    }
-
-    .stat-list div b {
-      display: block;
-      font-size: 1.4rem;
-      letter-spacing: -0.01em;
-      color: var(--primary-light);
-    }
-
-    .stat-list div span {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-
-    .contact {
-      border-bottom: none;
-      text-align: center;
-      padding: 96px 0 88px;
-    }
-
-    .contact h2 {
-      max-width: 20ch;
-      margin: 0 auto 18px;
-    }
-
-    .contact p {
-      color: var(--text-secondary);
-      font-size: 1.05rem;
-      max-width: 44ch;
-      margin: 0 auto 36px;
-    }
-
-    .contact-email {
-      font-size: 1.3rem;
-      font-weight: 600;
-      text-decoration: none;
-      color: #ff6b9d;
-      display: inline-block;
-      border-bottom: none;
-      padding-bottom: 8px;
-      transition: all 0.2s ease;
-    }
-
-    .contact-email:hover {
-      color: #8b5fbf;
-      border-color: #8b5fbf;
-      transform: scale(1.05);
-    }
-
-    .contact-email:hover {
-      transform: scale(1.05);
-    }
+    .contact { border-bottom: none; text-align: center; padding: 96px 0 88px; }
+    .contact h2 { max-width: 20ch; margin: 0 auto 18px; }
+    .contact p { color: var(--text-secondary); font-size: 1.05rem; max-width: 44ch; margin: 0 auto 36px; }
 
     footer {
-      padding: 32px 0 48px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      color: var(--text-secondary);
-      font-size: 0.82rem;
-      border-top: 1px solid var(--line);
+      padding: 32px 0 48px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      color: var(--text-secondary); font-size: 0.82rem; border-top: 1px solid var(--line);
     }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .service-card, .step {
-      animation: fadeInUp 0.6s ease backwards;
-    }
-
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .service-card { animation: fadeInUp 0.6s ease backwards; }
     .service-card:nth-child(1) { animation-delay: 0.1s; }
     .service-card:nth-child(2) { animation-delay: 0.2s; }
     .service-card:nth-child(3) { animation-delay: 0.3s; }
     .service-card:nth-child(4) { animation-delay: 0.4s; }
-
-    .step:nth-child(1) { animation-delay: 0.1s; }
-    .step:nth-child(2) { animation-delay: 0.2s; }
-    .step:nth-child(3) { animation-delay: 0.3s; }
-    .step:nth-child(4) { animation-delay: 0.4s; }
   </style>
 </head>
 <body>
@@ -527,6 +224,7 @@
     <nav class="nav-links">
       <a href="#tjenester">Tjenester</a>
       <a href="#om-oss">Om oss</a>
+      <a href="#grunnlegger">Grunnlegger</a>
       <a href="#referanser">Referanser</a>
       <a href="#kontakt" class="cta-btn">Ta kontakt</a>
     </nav>
@@ -534,13 +232,46 @@
 </header>
 
 <section class="hero">
-  <div class="wrap">
-    <span class="eyebrow mono">OSLO · WEB &amp; IT-KONSULTING</span>
-    <h1>Nettsider som faktisk jobber for deg.</h1>
-    <p class="lead">Vi kombinerer solid digital erfaring med moderne webutvikling for å gjøre små og mellomstore bedrifter synlige og valgte på nett.</p>
-    <div class="hero-actions">
-      <a class="btn-primary" href="mailto:hei@devlyn.no?subject=Gratis%20digital%20analyse">Få en gratis digital analyse</a>
-      <a class="btn-secondary" href="#tjenester">Se hva vi tilbyr</a>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow mono">OSLO · WEB &amp; IT-KONSULTING</span>
+      <h1>Nettsider som faktisk jobber for deg.</h1>
+      <p class="lead">Vi kombinerer solid digital erfaring med moderne webutvikling for å gjøre små og mellomstore bedrifter synlige og valgte på nett.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="mailto:hei@devlyn.no?subject=Gratis%20digital%20analyse">Få en gratis digital analyse</a>
+        <a class="btn-secondary" href="#tjenester">Se hva vi tilbyr</a>
+      </div>
+    </div>
+    <div class="hero-illustration" aria-hidden="true">
+      <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <defs>
+          <linearGradient id="ill-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#8b5fbf"/>
+            <stop offset="100%" stop-color="#ff6b9d"/>
+          </linearGradient>
+          <linearGradient id="ill-grad-2" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#ff6b9d" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#8b5fbf" stop-opacity="0.85"/>
+          </linearGradient>
+        </defs>
+        <circle cx="210" cy="210" r="170" fill="none" stroke="#3d2f5c" stroke-width="1.5" stroke-dasharray="3 7"/>
+        <circle cx="210" cy="210" r="128" fill="url(#ill-grad-1)" opacity="0.10"/>
+        <rect x="118" y="132" width="184" height="128" rx="14" fill="#2a1f40" stroke="url(#ill-grad-1)" stroke-width="2"/>
+        <circle cx="140" cy="152" r="4" fill="#ff6b9d"/>
+        <circle cx="154" cy="152" r="4" fill="#ffa3c7"/>
+        <circle cx="168" cy="152" r="4" fill="#8b5fbf"/>
+        <line x1="118" y1="166" x2="302" y2="166" stroke="#3d2f5c" stroke-width="1.5"/>
+        <polyline points="134,232 168,196 196,214 232,168 286,186" fill="none" stroke="url(#ill-grad-1)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="134" cy="232" r="5" fill="#ffa3c7"/>
+        <circle cx="168" cy="196" r="5" fill="#ffa3c7"/>
+        <circle cx="196" cy="214" r="5" fill="#ffa3c7"/>
+        <circle cx="232" cy="168" r="5" fill="#ff6b9d"/>
+        <circle cx="286" cy="186" r="6" fill="#ff6b9d"/>
+        <circle cx="90" cy="120" r="22" fill="url(#ill-grad-2)" opacity="0.85"/>
+        <circle cx="330" cy="290" r="30" fill="url(#ill-grad-1)" opacity="0.7"/>
+        <rect x="290" y="80" width="34" height="34" rx="9" fill="none" stroke="#8b5fbf" stroke-width="2.5" transform="rotate(18 307 97)"/>
+        <path d="M96 320c14-18 34-18 48 0" stroke="#ff6b9d" stroke-width="3" stroke-linecap="round" fill="none"/>
+      </svg>
     </div>
   </div>
 </section>
@@ -590,6 +321,34 @@
   </div>
 </section>
 
+<section id="grunnlegger">
+  <div class="wrap founder-grid">
+    <div style="display:flex; flex-direction:column; align-items:center;">
+      <div class="avatar-wrap">
+        <div class="avatar-ring"></div>
+        <div class="avatar">ME</div>
+      </div>
+      <span class="avatar-note">Bilde av Martin legges inn her</span>
+    </div>
+    <div>
+      <h2 style="margin-bottom: 6px;">Mannen bak Devlyn</h2>
+      <p class="founder-role mono">MARTIN ELOFSSON — GRUNNLEGGER</p>
+      <p class="founder-bio">Jeg har jobbet over 18 år med digital drift og telekom før jeg startet Devlyn. I dag bygger og drifter jeg nettsider for små og mellomstore bedrifter som vil bli funnet og valgt på nett — fra første idé, via lansering, til løpende drift og forbedring.</p>
+      <ul class="bring-list">
+        <li>18+ års erfaring fra digital drift og telekom</li>
+        <li>Du jobber direkte med meg — ingen mellomledd, ingen ferdigpakker</li>
+        <li>Kort vei fra idé til lansert løsning, og jeg blir med videre etter lansering</li>
+      </ul>
+      <div class="skills">
+        <span class="skill-tag">Nettsider &amp; webutvikling</span>
+        <span class="skill-tag">SEO &amp; lokal synlighet</span>
+        <span class="skill-tag">IT-rådgivning</span>
+        <span class="skill-tag">Automatisering &amp; AI-verktøy</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="referanser">
   <div class="wrap">
     <div class="section-head">
@@ -624,7 +383,7 @@
       <div>
         <h2 style="margin-bottom: 32px;">Klar for å ta nettside deres til neste nivå?</h2>
         <p style="margin-bottom: 32px; line-height: 1.7; font-size: 1.05rem;">Send en e-post eller ring oss, så tar vi en uforpliktende prat om hvor dere står i dag og hva som kan gjøres.</p>
-        
+
         <blockquote style="border-left: 3px solid #ff6b9d; padding-left: 20px; margin: 32px 0; font-style: italic; color: var(--text-secondary); line-height: 1.6;">
           "Vi fokuserer på reell forretningsverdi — løsninger som skaper målbar effekt for dine kunder og virksomheten."
         </blockquote>
@@ -677,7 +436,7 @@
         </div>
 
         <button type="submit" style="background: linear-gradient(135deg, #8b5fbf, #ff6b9d); color: white; border: none; padding: 14px 32px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 1rem; transition: transform 0.2s ease; width: 100%;">Send melding →</button>
-        
+
         <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 20px; line-height: 1.6;">Vi tar imot skjemaet og kontakter deg innen en arbeidsdag. Første samtale er alltid uforpliktende.</p>
       </form>
     </div>
@@ -693,10 +452,10 @@
 <script>
   document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
+
     const form = this;
     const formData = new FormData(form);
-    
+
     fetch('https://formspree.io/f/xoevaywb', {
       method: 'POST',
       body: formData,
@@ -719,15 +478,14 @@
     });
   });
 </script>
-<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 <div style="position: fixed; bottom: 18px; left: 18px; z-index: 100; display: flex; gap: 6px; background: rgba(26,20,37,0.92); border: 1px solid #3d2f5c; border-radius: 10px; padding: 6px; backdrop-filter: blur(8px); font-family: 'Instrument Sans', system-ui, sans-serif;">
   <a href="../" style="font-size: 0.75rem; color: #c7c7cc; text-decoration: none; padding: 6px 10px;">Alle versjoner</a>
-  <a href="../1/" style="font-size: 0.75rem; color: #fff; background: linear-gradient(135deg,#8b5fbf,#ff6b9d); text-decoration: none; padding: 6px 10px; border-radius: 6px; font-weight: 600;">1</a>
+  <a href="../1/" style="font-size: 0.75rem; color: #c7c7cc; text-decoration: none; padding: 6px 10px;">1</a>
   <a href="../2/" style="font-size: 0.75rem; color: #c7c7cc; text-decoration: none; padding: 6px 10px;">2</a>
   <a href="../3/" style="font-size: 0.75rem; color: #c7c7cc; text-decoration: none; padding: 6px 10px;">3</a>
   <a href="../4/" style="font-size: 0.75rem; color: #c7c7cc; text-decoration: none; padding: 6px 10px;">4</a>
-  <a href="../5/" style="font-size: 0.75rem; color: #c7c7cc; text-decoration: none; padding: 6px 10px;">5</a>
+  <a href="../5/" style="font-size: 0.75rem; color: #fff; background: linear-gradient(135deg,#8b5fbf,#ff6b9d); text-decoration: none; padding: 6px 10px; border-radius: 6px; font-weight: 600;">5</a>
 </div>
 
 </body>
