@@ -106,11 +106,17 @@
     .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: center; }
     @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } .hero-illustration { order: -1; max-width: 280px; margin: 0 auto 8px; } }
 
-    .hero-illustration { transition: transform 0.2s ease-out; }
-    .hero-illustration svg { animation: floatY 6s ease-in-out infinite; }
-    @keyframes floatY {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-14px); }
+    /* Hero illustration: appears once on load, then stays put (no mouse-follow) */
+    .hero-illustration.reveal {
+      opacity: 0;
+      transform: translateY(10px) scale(0.55) rotate(-9deg);
+      filter: blur(14px);
+      transition: opacity 1.15s cubic-bezier(.16,.84,.44,1), transform 1.15s cubic-bezier(.16,.84,.44,1), filter 1.15s cubic-bezier(.16,.84,.44,1);
+    }
+    .hero-illustration.reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1) rotate(0deg);
+      filter: blur(0);
     }
 
     .eyebrow {
@@ -129,8 +135,14 @@
     h1 {
       font-size: clamp(2.2rem, 4.6vw, 3.5rem); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 24px;
       max-width: 17ch; text-wrap: balance;
-      background: linear-gradient(135deg, var(--text-primary), var(--primary-light));
+      background: linear-gradient(100deg, var(--text-primary) 20%, var(--primary-light) 40%, var(--accent) 50%, var(--text-primary) 70%);
+      background-size: 220% auto;
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: shimmerText 7s linear infinite;
+    }
+    @keyframes shimmerText {
+      0% { background-position: 0% 50%; }
+      100% { background-position: -220% 50%; }
     }
 
     .hero p.lead { font-size: 1.15rem; color: var(--text-secondary); max-width: 52ch; margin: 0 0 36px; }
@@ -269,20 +281,45 @@
 
     /* Scroll-reveal system */
     .reveal {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity 0.7s cubic-bezier(.16,.84,.44,1), transform 0.7s cubic-bezier(.16,.84,.44,1);
+      opacity: 0; transform: translateY(46px) scale(0.97);
+      transition: opacity 0.9s cubic-bezier(.16,.84,.44,1), transform 0.9s cubic-bezier(.16,.84,.44,1);
+      will-change: opacity, transform;
     }
-    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); }
     .reveal-stagger > .reveal:nth-child(1) { transition-delay: 0s; }
-    .reveal-stagger > .reveal:nth-child(2) { transition-delay: .09s; }
-    .reveal-stagger > .reveal:nth-child(3) { transition-delay: .18s; }
-    .reveal-stagger > .reveal:nth-child(4) { transition-delay: .27s; }
+    .reveal-stagger > .reveal:nth-child(2) { transition-delay: .12s; }
+    .reveal-stagger > .reveal:nth-child(3) { transition-delay: .24s; }
+    .reveal-stagger > .reveal:nth-child(4) { transition-delay: .36s; }
+
+    /* Client logo marquee */
+    .marquee-wrap {
+      overflow: hidden; border-bottom: 1px solid var(--line);
+      padding: 20px 0; background: rgba(107, 63, 160, 0.06);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+    .marquee-track {
+      display: flex; gap: 56px; width: max-content;
+      animation: marqueeScroll 26s linear infinite;
+    }
+    .marquee-track span {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.82rem;
+      letter-spacing: 0.04em; color: var(--text-secondary); white-space: nowrap; opacity: 0.75;
+    }
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Count-up stat */
+    .count-up { display: inline-block; }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-      .hero::before, .hero-illustration svg, .avatar-ring, .eyebrow::before { animation: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; }
+      .hero::before, .avatar-ring, .eyebrow::before, h1, .marquee-track { animation: none !important; }
       .service-card, .btn-primary::before, header { transition: none !important; }
+      .marquee-wrap { overflow-x: auto; }
     }
   </style>
 </head>
@@ -362,6 +399,19 @@
   </div>
 </section>
 
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Hammarströms Persienner &amp; Markiser</span>
+    <span>Fönsterinredarna Sverige AB</span>
+    <span>Uddevalla Markis &amp; Persienn</span>
+    <span>Solskyddsprodukter</span>
+    <span>Hammarströms Persienner &amp; Markiser</span>
+    <span>Fönsterinredarna Sverige AB</span>
+    <span>Uddevalla Markis &amp; Persienn</span>
+    <span>Solskyddsprodukter</span>
+  </div>
+</div>
+
 <section id="tjenester">
   <div class="wrap">
     <div class="section-head reveal">
@@ -400,6 +450,7 @@
       <p>Devlyn er et Oslo-basert IT- og konsulentselskap grunnlagt av en leveranseleder med 18+ års erfaring fra digital transformasjon, IT-migreringer og enterprise-leveranser i telekombransjen. Den samme strukturen og erfaringen brukes nå til å bygge nettsider, skape synlighet og levere digitale løsninger for små og mellomstore bedrifter. Vi jobber tett med hver enkelt kunde — ingen ferdigpakker, ingen bortforklaringer, og alltid en tydelig plan for hva som skal gjøres og hvorfor.</p>
     </div>
     <div class="stat-list reveal">
+      <div><b class="count-up" data-target="18" data-suffix="+">0</b><span>års erfaring med digital leveranse og IT-konsulting</span></div>
       <div><b>Oslo</b><span>Basert i Oslo, jobber med kunder i hele Norge</span></div>
       <div><b>Nettsider · SEO</b><span>For bedrifter som vil bli funnet og valgt online</span></div>
       <div><b>Gratis analyse</b><span>Alltid en uforpliktende digital analyse først</span></div>
@@ -600,28 +651,42 @@
             io.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
       revealEls.forEach(el => io.observe(el));
     }
 
-    if (reduceMotion || !finePointer) return;
-
-    // Hero illustration parallax
-    const heroSection = document.querySelector('.hero');
-    const heroIll = document.querySelector('.hero-illustration');
-    if (heroSection && heroIll) {
-      heroSection.addEventListener('mousemove', (e) => {
-        const rect = heroIll.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = (e.clientX - cx) / rect.width;
-        const dy = (e.clientY - cy) / rect.height;
-        heroIll.style.transform = `translate3d(${(dx * 16).toFixed(1)}px, ${(dy * 16).toFixed(1)}px, 0)`;
-      });
-      heroSection.addEventListener('mouseleave', () => {
-        heroIll.style.transform = 'translate3d(0,0,0)';
-      });
+    // Count-up stat (e.g. "18+ års erfaring") — plays once when scrolled into view
+    const counters = document.querySelectorAll('.count-up');
+    if (counters.length) {
+      const animateCounter = (el) => {
+        const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+        const suffix = el.getAttribute('data-suffix') || '';
+        const duration = 1300;
+        const start = performance.now();
+        function tick(now) {
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(eased * target) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      };
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        counters.forEach(el => { el.textContent = (el.getAttribute('data-target') || '0') + (el.getAttribute('data-suffix') || ''); });
+      } else {
+        const counterIo = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+              counterIo.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.6 });
+        counters.forEach(el => counterIo.observe(el));
+      }
     }
+
+    if (reduceMotion || !finePointer) return;
 
     // Subtle 3D tilt on cards
     document.querySelectorAll('.service-card').forEach(card => {
