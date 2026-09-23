@@ -194,6 +194,19 @@
       color: var(--text-secondary); font-size: 0.82rem; border-top: 1px solid var(--line);
     }
 
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+    .contact-form-offset { margin-top: 145px; }
+    @media (max-width: 860px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+      .contact-form-offset { margin-top: 0; }
+    }
+    .form-label-row { display: flex; align-items: center; gap: 1rem; }
+    .form-label-row span { min-width: 140px; text-align: left; }
+    @media (max-width: 600px) {
+      .form-label-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .form-label-row span { min-width: 0; }
+    }
+
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .service-card { animation: fadeInUp 0.6s ease backwards; }
     .service-card:nth-child(1) { animation-delay: 0.1s; }
@@ -311,7 +324,7 @@
   <div class="wrap about-grid">
     <div>
       <h2 style="margin-bottom: 20px;">Om Devlyn</h2>
-      <p>Devlyn er et Oslo-basert IT- og konsulentselskap grunnlagt av en leveranseleder med 18+ års erfaring fra digital transformasjon, IT-migreringer og enterprise-leveranser i telekombransjen. Den samme strukturen og erfaringen brukes nå til å bygge nettsider, synlighet og digitale løsninger for små og mellomstore bedrifter. Vi jobber tett med hver enkelt kunde — ingen ferdigpakker, ingen bortforklaringer, og alltid en tydelig plan for hva som skal gjøres og hvorfor.</p>
+      <p>Devlyn er et Oslo-basert IT- og konsulentselskap grunnlagt av en leveranseleder med 18+ års erfaring fra digital transformasjon, IT-migreringer og enterprise-leveranser i telekombransjen. Den samme strukturen og erfaringen brukes nå til å bygge nettsider, skape synlighet og levere digitale løsninger for små og mellomstore bedrifter. Vi jobber tett med hver enkelt kunde — ingen ferdigpakker, ingen bortforklaringer, og alltid en tydelig plan for hva som skal gjøres og hvorfor.</p>
     </div>
     <div class="stat-list">
       <div><b>Oslo</b><span>Basert i Oslo, jobber med kunder i hele Norge</span></div>
@@ -333,7 +346,7 @@
     <div>
       <h2 style="margin-bottom: 6px;">Mannen bak Devlyn</h2>
       <p class="founder-role mono">MARTIN ELOFSSON — GRUNNLEGGER</p>
-      <p class="founder-bio">Jeg har jobbet i 18+ år med å lede IT-leveranser, migreringsprosjekter og digitale transformasjoner i store, internasjonale telekommiljøer. Den samme strukturen og erfaringen bruker jeg nå til å bygge og drifte nettsider for små og mellomstore bedrifter som vil bli funnet og valgt på nett — fra første idé, via lansering, til løpende drift og forbedring.</p>
+      <p class="founder-bio">Jeg har jobbet i 18+ år med å lede IT-leveranser, migreringsprosjekter og digitale transformasjoner i store, internasjonale telekom-miljøer. Den samme strukturen og erfaringen bruker jeg nå til å bygge og drifte nettsider for små og mellomstore bedrifter som vil bli funnet og valgt på nett — fra første idé, via lansering, til løpende drift og forbedring.</p>
       <ul class="bring-list">
         <li>18+ års erfaring med å lede IT-leveranser og digitale transformasjonsprosjekter i store, internasjonale miljøer</li>
         <li>Sertifisert i PRINCE2, ITIL og Agile — med praktisk erfaring fra generativ AI (LLM, RAG, AI-agenter)</li>
@@ -378,14 +391,14 @@
 
 <section class="contact" id="kontakt">
   <div class="wrap">
-    <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start;">
+    <div class="contact-grid">
       <!-- Vänster sida: Text och kontaktinfo -->
       <div>
-        <h2 style="margin-bottom: 32px;">Klar for å ta nettside deres til neste nivå?</h2>
+        <h2 style="margin-bottom: 32px;">Klar for å ta nettsiden deres til neste nivå?</h2>
         <p style="margin-bottom: 32px; line-height: 1.7; font-size: 1.05rem;">Send en e-post eller ring oss, så tar vi en uforpliktende prat om hvor dere står i dag og hva som kan gjøres.</p>
 
         <blockquote style="border-left: 3px solid #ff6b9d; padding-left: 20px; margin: 32px 0; font-style: italic; color: var(--text-secondary); line-height: 1.6;">
-          "Vi fokuserer på reell forretningsverdi — løsninger som skaper målbar effekt for dine kunder og virksomheten."
+          "Vi fokuserer på reell forretningsverdi — løsninger som skaper målbar effekt for dine kunder og din virksomhet."
         </blockquote>
 
         <div style="margin-top: 40px;">
@@ -405,31 +418,31 @@
       </div>
 
       <!-- Høyre sida: Kontaktformulär -->
-      <form id="contactForm" method="POST" action="https://formspree.io/f/xoevaywb" style="margin-top: 145px;">
+      <form id="contactForm" class="contact-form-offset" method="POST" action="https://formspree.io/f/xoevaywb">
         <!-- Success message -->
         <div id="successMessage" style="display: none; margin-bottom: 20px; padding: 16px; background: rgba(75, 192, 192, 0.1); border: 1px solid rgba(75, 192, 192, 0.3); border-radius: 6px; color: #4bc0c0; font-size: 0.95rem;">
           ✓ Takk! Vi mottar meldingen din og kontakter deg snart.
         </div>
 
         <div style="margin-bottom: 24px;">
-          <label style="display: flex; align-items: center; gap: 1rem; margin-bottom: 15px; font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">
-            <span style="min-width: 140px; text-align: left;">Navn *</span>
+          <label class="form-label-row" style="margin-bottom: 15px; font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">
+            <span>Navn *</span>
           <input type="text" name="navn" style="flex: 1; width: 100%; padding: 12px; border: 1px solid rgba(139, 95, 191, 0.2); border-radius: 6px; background: var(--bg-primary); color: var(--text-primary); font-family: inherit; font-size: 1rem;" required>
           </label>
           <span style="font-size: 0.85rem; color: #ff6b9d; margin-top: 4px; display: block;"></span>
         </div>
 
         <div style="margin-bottom: 24px;">
-          <label style="display: flex; align-items: center; gap: 1rem; margin-bottom: 15px; font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">
-            <span style="min-width: 140px; text-align: left;">E-post *</span>
+          <label class="form-label-row" style="margin-bottom: 15px; font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">
+            <span>E-post *</span>
           <input type="email" name="epost" style="flex: 1; width: 100%; padding: 12px; border: 1px solid rgba(139, 95, 191, 0.2); border-radius: 6px; background: var(--bg-primary); color: var(--text-primary); font-family: inherit; font-size: 1rem;" required>
           </label>
           <span style="font-size: 0.85rem; color: #ff6b9d; margin-top: 4px; display: block;"></span>
         </div>
 
         <div style="margin-bottom: 32px;">
-          <label style="display: flex; align-items: center; gap: 1rem; margin-bottom: 15px; font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">
-            <span style="min-width: 140px; text-align: left;">Hva jobber dere med? *</span>
+          <label class="form-label-row" style="margin-bottom: 15px; font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">
+            <span>Hva jobber dere med? *</span>
           <textarea name="melding" style="flex: 1; width: 100%; padding: 12px; border: 1px solid rgba(139, 95, 191, 0.2); border-radius: 6px; background: var(--bg-primary); color: var(--text-primary); font-family: inherit; min-height: 120px; resize: vertical; font-size: 1rem;" placeholder="Et par setninger om kontekst, problem eller idé." required></textarea>
           </label>
           <span style="font-size: 0.85rem; color: #ff6b9d; margin-top: 4px; display: block;"></span>
