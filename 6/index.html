@@ -291,22 +291,22 @@
     .reveal-stagger > .reveal:nth-child(3) { transition-delay: .24s; }
     .reveal-stagger > .reveal:nth-child(4) { transition-delay: .36s; }
 
-    /* Client logo marquee */
-    .marquee-wrap {
-      overflow: hidden; border-bottom: 1px solid var(--line);
-      padding: 20px 0; background: rgba(107, 63, 160, 0.06);
-      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    /* Client card marquee (referanser) */
+    .client-marquee-wrap {
+      overflow: hidden; padding: 6px 0 10px;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
     }
-    .marquee-track {
-      display: flex; gap: 56px; width: max-content;
-      animation: marqueeScroll 26s linear infinite;
+    .client-marquee-track {
+      display: flex; gap: 20px; width: max-content;
+      animation: clientMarqueeScroll 34s linear infinite;
     }
-    .marquee-track span {
-      font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.82rem;
-      letter-spacing: 0.04em; color: var(--text-secondary); white-space: nowrap; opacity: 0.75;
+    .client-marquee-track:hover { animation-play-state: paused; }
+    .client-marquee-track .service-card {
+      width: 300px; flex: 0 0 auto; border-radius: 12px;
     }
-    @keyframes marqueeScroll {
+    @media (max-width: 600px) { .client-marquee-track .service-card { width: 260px; } }
+    @keyframes clientMarqueeScroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
@@ -317,9 +317,9 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; }
-      .hero::before, .avatar-ring, .eyebrow::before, h1, .marquee-track { animation: none !important; }
+      .hero::before, .avatar-ring, .eyebrow::before, h1, .client-marquee-track { animation: none !important; }
       .service-card, .btn-primary::before, header { transition: none !important; }
-      .marquee-wrap { overflow-x: auto; }
+      .client-marquee-wrap { overflow-x: auto; }
     }
   </style>
 </head>
@@ -398,19 +398,6 @@
     </div>
   </div>
 </section>
-
-<div class="marquee-wrap" aria-hidden="true">
-  <div class="marquee-track">
-    <span>Hammarströms Persienner &amp; Markiser</span>
-    <span>Fönsterinredarna Sverige AB</span>
-    <span>Uddevalla Markis &amp; Persienn</span>
-    <span>Solskyddsprodukter</span>
-    <span>Hammarströms Persienner &amp; Markiser</span>
-    <span>Fönsterinredarna Sverige AB</span>
-    <span>Uddevalla Markis &amp; Persienn</span>
-    <span>Solskyddsprodukter</span>
-  </div>
-</div>
 
 <section id="tjenester">
   <div class="wrap">
@@ -492,22 +479,41 @@
       <h2>Kunder vi jobber med</h2>
       <p class="section-sub">Et utvalg av bedrifter vi bygger og drifter nettsider for.</p>
     </div>
-    <div class="services-grid reveal-stagger" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
-      <div class="service-card reveal">
+  </div>
+  <div class="client-marquee-wrap reveal">
+    <div class="client-marquee-track">
+      <div class="service-card">
         <h3>Hammarströms Persienner &amp; Markiser</h3>
         <p>Solskjerming i Trollhättan — persienner og markiser, over 50 års erfaring. <a href="https://hst.se" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600;">hst.se ↗</a></p>
       </div>
-      <div class="service-card reveal">
+      <div class="service-card">
         <h3>Fönsterinredarna Sverige AB</h3>
         <p>Måttbeställda gardiner og solskjerming i Halmstad. <a href="https://fonsterinredarna.se" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600;">fonsterinredarna.se ↗</a></p>
       </div>
-      <div class="service-card reveal">
+      <div class="service-card">
         <h3>Uddevalla Markis &amp; Persienn</h3>
         <p>Markiser, persienner og solskjerming i Uddevalla. <a href="https://uddevallamarkis.se" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600;">uddevallamarkis.se ↗</a></p>
       </div>
-      <div class="service-card reveal">
+      <div class="service-card">
         <h3>Solskyddsprodukter</h3>
         <p>Innvendig og utvendig solskjerming i Vänersborg. <a href="https://solskyddsprodukter.net" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600;">solskyddsprodukter.net ↗</a></p>
+      </div>
+      <!-- duplicated for seamless loop -->
+      <div class="service-card" aria-hidden="true">
+        <h3>Hammarströms Persienner &amp; Markiser</h3>
+        <p>Solskjerming i Trollhättan — persienner og markiser, over 50 års erfaring. <a href="https://hst.se" target="_blank" rel="noopener" tabindex="-1" style="color: var(--accent); font-weight: 600;">hst.se ↗</a></p>
+      </div>
+      <div class="service-card" aria-hidden="true">
+        <h3>Fönsterinredarna Sverige AB</h3>
+        <p>Måttbeställda gardiner og solskjerming i Halmstad. <a href="https://fonsterinredarna.se" target="_blank" rel="noopener" tabindex="-1" style="color: var(--accent); font-weight: 600;">fonsterinredarna.se ↗</a></p>
+      </div>
+      <div class="service-card" aria-hidden="true">
+        <h3>Uddevalla Markis &amp; Persienn</h3>
+        <p>Markiser, persienner og solskjerming i Uddevalla. <a href="https://uddevallamarkis.se" target="_blank" rel="noopener" tabindex="-1" style="color: var(--accent); font-weight: 600;">uddevallamarkis.se ↗</a></p>
+      </div>
+      <div class="service-card" aria-hidden="true">
+        <h3>Solskyddsprodukter</h3>
+        <p>Innvendig og utvendig solskjerming i Vänersborg. <a href="https://solskyddsprodukter.net" target="_blank" rel="noopener" tabindex="-1" style="color: var(--accent); font-weight: 600;">solskyddsprodukter.net ↗</a></p>
       </div>
     </div>
   </div>
