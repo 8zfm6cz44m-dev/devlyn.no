@@ -25,12 +25,9 @@
     p.sub { color: #a3a19c; margin: 0 0 44px; font-size: 1rem; }
     .cards {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 20px;
     }
-    @media (max-width: 1200px) { .cards { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 720px) { .cards { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 480px) { .cards { grid-template-columns: 1fr; } }
     .card {
       display: block;
       text-decoration: none;
@@ -50,8 +47,8 @@
 </head>
 <body>
   <div class="wrap">
-    <h1>Devlyn — fem retninger</h1>
-    <p class="sub">Samme innhold, fem ulike visuelle uttrykk. Velg en å se nærmere på.</p>
+    <h1>Devlyn — seks retninger</h1>
+    <p class="sub">Samme innhold, seks ulike visuelle uttrykk. Velg en å se nærmere på.</p>
     <div class="cards">
       <a class="card" href="1/">
         <span class="num">Versjon 1</span>
@@ -96,6 +93,16 @@
         <span class="num">Versjon 5</span>
         <h2>Personlig</h2>
         <p>Samme palett som versjon 1, men med illustrasjon i hero og en egen presentasjon av grunnleggeren.</p>
+        <div class="swatches">
+          <span class="swatch" style="background:#1a1425"></span>
+          <span class="swatch" style="background:#8b5fbf"></span>
+          <span class="swatch" style="background:#ff6b9d"></span>
+        </div>
+      </a>
+      <a class="card" href="6/">
+        <span class="num">Versjon 6</span>
+        <h2>Fancy</h2>
+        <p>Versjon 5, men mer påkostet — scroll-animasjoner, parallax-illustrasjon og myke hover-effekter.</p>
         <div class="swatches">
           <span class="swatch" style="background:#1a1425"></span>
           <span class="swatch" style="background:#8b5fbf"></span>
