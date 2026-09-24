@@ -3,113 +3,743 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Devlyn — Velg versjon</title>
-  <meta name="robots" content="noindex, nofollow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap">
+  <title>Devlyn — Nettsider, SEO &amp; IT-konsulting i Oslo</title>
+  <meta name="description" content="Devlyn leverer nettsider, SEO og IT-konsulenttjenester i Oslo — digitale løsninger som gjør små og mellomstore bedrifter konkurransedyktige online.">
+  <link rel="canonical" href="https://devlyn.no/">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Devlyn">
+  <meta property="og:locale" content="nb_NO">
+  <meta property="og:title" content="Devlyn — Nettsider, SEO & IT-konsulting i Oslo">
+  <meta property="og:description" content="Devlyn leverer nettsider, SEO og IT-konsulenttjenester i Oslo — digitale løsninger som gjør små og mellomstore bedrifter konkurransedyktige online.">
+  <meta property="og:url" content="https://devlyn.no/">
+  <meta property="og:image" content="https://devlyn.no/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Devlyn — Nettsider, SEO & IT-konsulting i Oslo">
+  <meta name="twitter:description" content="Devlyn leverer nettsider, SEO og IT-konsulenttjenester i Oslo — digitale løsninger som gjør små og mellomstore bedrifter konkurransedyktige online.">
+  <meta name="twitter:image" content="https://devlyn.no/og-image.png">
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Devlyn",
+    "legalName": "Devlyn IT Tjenester Elofsson",
+    "url": "https://devlyn.no/",
+    "logo": "https://devlyn.no/devlyn-logo-with-text.svg",
+    "image": "https://devlyn.no/og-image.png",
+    "email": "hei@devlyn.no",
+    "telephone": "+47 479 25 454",
+    "taxID": "938487073",
+    "areaServed": {
+      "@type": "City",
+      "name": "Oslo"
+    },
+    "description": "Devlyn leverer nettsider, SEO og IT-konsulenttjenester i Oslo — digitale løsninger som gjør små og mellomstore bedrifter konkurransedyktige online.",
+    "knowsAbout": ["Webutvikling", "SEO", "IT-konsulentvirksomhet", "Apputvikling"]
+  }
+  </script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <style>
+    :root {
+      --primary: #6b3fa0;
+      --primary-light: #8b5fbf;
+      --primary-dark: #4a2670;
+      --accent: #ff6b9d;
+      --accent-light: #ffa3c7;
+      --text-primary: #f5f5f7;
+      --text-secondary: #c7c7cc;
+      --bg-primary: #1a1425;
+      --bg-secondary: #2a1f40;
+      --bg-tertiary: #3d2f5c;
+      --line: #3d2f5c;
+    }
+
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      background: #111014;
-      color: #f2f1ee;
-      font-family: 'Instrument Sans', system-ui, sans-serif;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, #2a1f40 100%);
+      color: var(--text-primary);
+      font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
     }
-    .wrap { max-width: 1180px; width: 100%; }
-    h1 { font-size: 1.6rem; margin: 0 0 8px; }
-    p.sub { color: #a3a19c; margin: 0 0 44px; font-size: 1rem; }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 20px;
+
+    .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; letter-spacing: 0.04em; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    /* Scroll progress bar */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 999;
+      background: linear-gradient(90deg, var(--primary-light), var(--accent));
+      box-shadow: 0 0 12px rgba(255, 107, 157, 0.5);
     }
-    .card {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-      border: 1px solid #2a2930;
-      border-radius: 10px;
-      padding: 28px 24px;
-      transition: border-color 0.2s ease, transform 0.2s ease;
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(26, 20, 37, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      transition: background 0.35s ease, box-shadow 0.35s ease;
     }
-    .card:hover { border-color: #6b6863; transform: translateY(-2px); }
-    .card .num { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: #8b8781; margin-bottom: 14px; display: block; }
-    .card h2 { font-size: 1.2rem; margin: 0 0 10px; }
-    .card p { font-size: 0.92rem; color: #a3a19c; margin: 0; line-height: 1.55; }
-    .swatches { display: flex; gap: 6px; margin-top: 20px; }
-    .swatch { width: 20px; height: 20px; border-radius: 4px; }
+    header.scrolled { background: rgba(20, 15, 30, 0.94); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); }
+
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; gap: 16px; }
+
+    .logo { font-weight: 700; font-size: 1.35rem; letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; color: var(--text-primary); }
+    .logo-mark { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+    .logo-mark svg { width: 100%; height: 100%; }
+    .logo span { background: linear-gradient(135deg, var(--primary-light), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    nav { display: flex; gap: 26px; align-items: center; }
+    nav.nav-links a:not(.cta-btn) {
+      position: relative; font-size: 0.92rem; color: var(--text-secondary); text-decoration: none;
+      transition: color 0.3s ease; padding-bottom: 2px;
+    }
+    nav.nav-links a:not(.cta-btn)::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
+      background: linear-gradient(90deg, var(--primary-light), var(--accent));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease;
+    }
+    nav.nav-links a:not(.cta-btn):hover { color: var(--text-primary); }
+    nav.nav-links a:not(.cta-btn):hover::after { transform: scaleX(1); }
+
+    .cta-btn {
+      background: linear-gradient(135deg, var(--primary-light), var(--accent));
+      color: #fff; padding: 10px 18px; border-radius: 8px; font-size: 0.92rem; font-weight: 600;
+      text-decoration: none; white-space: nowrap; display: inline-block;
+      transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer;
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(107, 63, 160, 0.3); }
+
+    .nav-links { display: flex; }
+    @media (max-width: 860px) { .nav-links { display: none; } }
+
+    .hero { padding: 108px 0 96px; border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
+    .hero::before {
+      content: ""; position: absolute; top: -50%; right: -10%; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(107, 63, 160, 0.15) 0%, transparent 70%);
+      border-radius: 50%; z-index: 1; pointer-events: none;
+      animation: blobDrift 14s ease-in-out infinite;
+    }
+    @keyframes blobDrift {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-40px, 30px) scale(1.1); }
+    }
+    .hero .wrap { position: relative; z-index: 2; }
+
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: center; }
+    @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } .hero-illustration { order: -1; max-width: 280px; margin: 0 auto 8px; } }
+
+    /* Hero illustration: appears once on load, then stays put (no mouse-follow) */
+    .hero-illustration.reveal {
+      opacity: 0;
+      transform: translateY(10px) scale(0.55) rotate(-9deg);
+      filter: blur(14px);
+      transition: opacity 1.15s cubic-bezier(.16,.84,.44,1), transform 1.15s cubic-bezier(.16,.84,.44,1), filter 1.15s cubic-bezier(.16,.84,.44,1);
+    }
+    .hero-illustration.reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1) rotate(0deg);
+      filter: blur(0);
+    }
+
+    .eyebrow {
+      font-size: 0.78rem; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 22px;
+      display: inline-flex; align-items: center; gap: 10px; letter-spacing: 0.1em;
+    }
+    .eyebrow::before {
+      content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: inline-block;
+      animation: pulseDot 2.4s ease-in-out infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 157, 0.5); }
+      50% { box-shadow: 0 0 0 5px rgba(255, 107, 157, 0); }
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 4.6vw, 3.5rem); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 24px;
+      max-width: 17ch; text-wrap: balance;
+      background: linear-gradient(100deg, var(--text-primary) 20%, var(--primary-light) 40%, var(--accent) 50%, var(--text-primary) 70%);
+      background-size: 220% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: shimmerText 7s linear infinite;
+    }
+    @keyframes shimmerText {
+      0% { background-position: 0% 50%; }
+      100% { background-position: -220% 50%; }
+    }
+
+    .hero p.lead { font-size: 1.15rem; color: var(--text-secondary); max-width: 52ch; margin: 0 0 36px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+
+    .btn-primary {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, var(--primary-light), var(--accent)); color: #fff; padding: 14px 26px;
+      border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease; border: none;
+    }
+    .btn-primary::before {
+      content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: skewX(-20deg); transition: left 0.7s ease;
+    }
+    .btn-primary:hover::before { left: 130%; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(107, 63, 160, 0.4); }
+
+    .btn-secondary {
+      padding: 14px 22px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem;
+      color: var(--text-primary); border: 1px solid var(--line); cursor: pointer; background: transparent;
+      transition: all 0.2s ease;
+    }
+    .btn-secondary:hover { border-color: var(--primary-light); background: rgba(107, 63, 160, 0.1); }
+
+    section { padding: 76px 0; border-bottom: 1px solid var(--line); }
+    section:last-of-type { border-bottom: none; }
+
+    .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 48px; flex-wrap: wrap; }
+
+    h2 {
+      font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.015em; margin: 0; text-wrap: balance;
+      background: linear-gradient(135deg, var(--text-primary), var(--primary-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .section-sub { color: var(--text-secondary); max-width: 38ch; font-size: 1rem; margin: 0; }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line);
+      border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+      perspective: 1000px;
+    }
+    @media (max-width: 700px) { .services-grid { grid-template-columns: 1fr; } }
+
+    .service-card {
+      background: var(--bg-secondary); padding: 32px; border: 1px solid rgba(107, 63, 160, 0.2);
+      transition: transform 0.4s cubic-bezier(.16,.84,.44,1), background 0.35s ease, border-color 0.35s ease, box-shadow 0.4s ease;
+      will-change: transform;
+    }
+    .service-card:hover {
+      background: var(--bg-tertiary); border-color: var(--primary-light);
+      box-shadow: 0 22px 44px -14px rgba(107, 63, 160, 0.45), inset 0 0 24px rgba(107, 63, 160, 0.1);
+    }
+    .service-tag { font-size: 0.72rem; color: var(--accent); margin-bottom: 16px; display: block; font-weight: 600; }
+    .service-card h3 { font-size: 1.15rem; margin: 0 0 10px; letter-spacing: -0.01em; }
+    .service-card p { color: var(--text-secondary); margin: 0; font-size: 0.96rem; }
+
+    .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: start; }
+    @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-grid p { font-size: 1.05rem; color: var(--text-secondary); max-width: 56ch; }
+
+    .stat-list { display: flex; flex-direction: column; gap: 22px; border-left: 2px solid var(--primary-light); padding-left: 24px; }
+    .stat-list div b { display: block; font-size: 1.4rem; letter-spacing: -0.01em; color: var(--primary-light); }
+    .stat-list div span { color: var(--text-secondary); font-size: 0.9rem; }
+
+    /* Grunnlegger / founder section */
+    .founder-grid { display: grid; grid-template-columns: 1fr; gap: 52px; align-items: start; max-width: 68ch; }
+
+    .founder-name { font-size: 1.5rem; font-weight: 700; margin: 0 0 4px; letter-spacing: -0.01em; }
+    .founder-role { color: var(--accent); font-size: 0.9rem; font-weight: 600; margin: 0 0 20px; }
+    .founder-bio { color: var(--text-secondary); font-size: 1.03rem; max-width: 58ch; margin: 0 0 28px; }
+
+    .bring-list { list-style: none; padding: 0; margin: 0 0 30px; display: flex; flex-direction: column; gap: 12px; }
+    .bring-list li { display: flex; align-items: flex-start; gap: 12px; color: var(--text-secondary); font-size: 0.98rem; }
+    .bring-list li::before { content: "✓"; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    @media (max-width: 760px) { .skills { justify-content: center; } }
+    .skill-tag {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.76rem; letter-spacing: 0.03em;
+      padding: 7px 13px; border-radius: 20px; border: 1px solid var(--line); color: var(--text-secondary);
+      background: var(--bg-secondary); transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    }
+    .skill-tag:hover { border-color: var(--accent); color: var(--text-primary); transform: translateY(-2px); }
+
+    .contact { border-bottom: none; text-align: center; padding: 96px 0 88px; }
+    .contact h2 { max-width: 20ch; margin: 0 auto 18px; }
+    .contact p { color: var(--text-secondary); font-size: 1.05rem; max-width: 44ch; margin: 0 auto 36px; }
+
+    footer {
+      padding: 32px 0 48px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      color: var(--text-secondary); font-size: 0.82rem; border-top: 1px solid var(--line);
+    }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+    .contact-form-offset { margin-top: 145px; }
+    @media (max-width: 860px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+      .contact-form-offset { margin-top: 0; }
+    }
+    .form-label-row { display: flex; align-items: center; gap: 1rem; }
+    .form-label-row span { min-width: 140px; text-align: left; }
+    @media (max-width: 600px) {
+      .form-label-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .form-label-row span { min-width: 0; }
+    }
+    #contactForm input, #contactForm textarea { transition: border-color 0.25s ease, box-shadow 0.25s ease; }
+    #contactForm input:focus, #contactForm textarea:focus {
+      outline: none; border-color: var(--primary-light) !important;
+      box-shadow: 0 0 0 3px rgba(139, 95, 191, 0.25);
+    }
+
+    /* Scroll-reveal system */
+    .reveal {
+      opacity: 0; transform: translateY(46px) scale(0.97);
+      transition: opacity 0.9s cubic-bezier(.16,.84,.44,1), transform 0.9s cubic-bezier(.16,.84,.44,1);
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal-stagger > .reveal:nth-child(1) { transition-delay: 0s; }
+    .reveal-stagger > .reveal:nth-child(2) { transition-delay: .12s; }
+    .reveal-stagger > .reveal:nth-child(3) { transition-delay: .24s; }
+    .reveal-stagger > .reveal:nth-child(4) { transition-delay: .36s; }
+
+    /* Client card marquee (referanser) */
+    .client-marquee-wrap {
+      overflow: hidden; padding: 6px 0 10px;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    }
+    .client-marquee-track {
+      display: flex; gap: 20px; width: max-content;
+      animation: clientMarqueeScroll 34s linear infinite;
+    }
+    .client-marquee-track:hover { animation-play-state: paused; }
+    .client-marquee-track .service-card {
+      width: 300px; flex: 0 0 auto; border-radius: 12px;
+    }
+    @media (max-width: 600px) { .client-marquee-track .service-card { width: 260px; } }
+    @keyframes clientMarqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Count-up stat */
+    .count-up { display: inline-block; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; }
+      .hero::before, .eyebrow::before, h1, .client-marquee-track { animation: none !important; }
+      .service-card, .btn-primary::before, header { transition: none !important; }
+      .client-marquee-wrap { overflow-x: auto; }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>Devlyn — seks retninger</h1>
-    <p class="sub">Samme innhold, seks ulike visuelle uttrykk. Velg en å se nærmere på.</p>
-    <div class="cards">
-      <a class="card" href="1/">
-        <span class="num">Versjon 1</span>
-        <h2>Nåværende</h2>
-        <p>Den eksisterende siden — mørk lilla/rosa gradient, moderne SaaS-preg.</p>
-        <div class="swatches">
-          <span class="swatch" style="background:#1a1425"></span>
-          <span class="swatch" style="background:#8b5fbf"></span>
-          <span class="swatch" style="background:#ff6b9d"></span>
-        </div>
-      </a>
-      <a class="card" href="2/">
-        <span class="num">Versjon 2</span>
-        <h2>Revisjon</h2>
-        <p>Lys, redaksjonell stil. Serif + mono, tallmerket tjenesteliste, "bevis-kort" i hero.</p>
-        <div class="swatches">
-          <span class="swatch" style="background:#f5efe4"></span>
-          <span class="swatch" style="background:#17140f"></span>
-          <span class="swatch" style="background:#b5502e"></span>
-        </div>
-      </a>
-      <a class="card" href="3/">
-        <span class="num">Versjon 3</span>
-        <h2>Studio</h2>
-        <p>Mørk, dempet og personlig. Kursiv serif-manifest, messing-detaljer, romertall.</p>
-        <div class="swatches">
-          <span class="swatch" style="background:#0d1210"></span>
-          <span class="swatch" style="background:#c9a45c"></span>
-          <span class="swatch" style="background:#f3f1ea"></span>
-        </div>
-      </a>
-      <a class="card" href="4/">
-        <span class="num">Versjon 4</span>
-        <h2>Skarpt</h2>
-        <p>Inspirert av f4.no. Svart/hvitt, ingen farger, stor grotesk-typografi, numrert liste, rett på sak.</p>
-        <div class="swatches">
-          <span class="swatch" style="background:#f7f6f2;border:1px solid #333"></span>
-          <span class="swatch" style="background:#0a0a0a"></span>
-        </div>
-      </a>
-      <a class="card" href="5/">
-        <span class="num">Versjon 5</span>
-        <h2>Personlig</h2>
-        <p>Samme palett som versjon 1, men med illustrasjon i hero og en egen presentasjon av grunnleggeren.</p>
-        <div class="swatches">
-          <span class="swatch" style="background:#1a1425"></span>
-          <span class="swatch" style="background:#8b5fbf"></span>
-          <span class="swatch" style="background:#ff6b9d"></span>
-        </div>
-      </a>
-      <a class="card" href="6/">
-        <span class="num">Versjon 6</span>
-        <h2>Fancy</h2>
-        <p>Versjon 5, men mer påkostet — scroll-animasjoner, parallax-illustrasjon og myke hover-effekter.</p>
-        <div class="swatches">
-          <span class="swatch" style="background:#1a1425"></span>
-          <span class="swatch" style="background:#8b5fbf"></span>
-          <span class="swatch" style="background:#ff6b9d"></span>
-        </div>
-      </a>
+
+<div class="scroll-progress"></div>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="logo" href="https://8zfm6cz44m-dev.github.io/devlyn.no/" style="text-decoration: none;">
+      <div class="logo-mark">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#8b5fbf;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#ff6b9d;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <circle cx="16" cy="16" r="14" fill="none" stroke="url(#logo-grad)" stroke-width="2.5"/>
+          <path d="M16 8v8m0 0l-4-4m4 4l4-4" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span>Devlyn</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#tjenester">Tjenester</a>
+      <a href="#om-oss">Om oss</a>
+      <a href="#grunnlegger">Grunnlegger</a>
+      <a href="#referanser">Referanser</a>
+      <a href="#kontakt" class="cta-btn">Ta kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid reveal-stagger">
+    <div class="reveal">
+      <span class="eyebrow mono">OSLO · WEB &amp; IT-KONSULTING</span>
+      <h1>Nettsider som faktisk jobber for deg.</h1>
+      <p class="lead">Vi kombinerer solid digital erfaring med moderne webutvikling for å gjøre små og mellomstore bedrifter synlige og valgte på nett.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="mailto:hei@devlyn.no?subject=Gratis%20digital%20analyse">Få en gratis digital analyse</a>
+        <a class="btn-secondary" href="#tjenester">Se hva vi tilbyr</a>
+      </div>
+    </div>
+    <div class="hero-illustration reveal" aria-hidden="true">
+      <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <defs>
+          <linearGradient id="ill-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#8b5fbf"/>
+            <stop offset="100%" stop-color="#ff6b9d"/>
+          </linearGradient>
+          <linearGradient id="ill-grad-2" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#ff6b9d" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#8b5fbf" stop-opacity="0.85"/>
+          </linearGradient>
+        </defs>
+        <circle cx="210" cy="210" r="170" fill="none" stroke="#3d2f5c" stroke-width="1.5" stroke-dasharray="3 7"/>
+        <circle cx="210" cy="210" r="128" fill="url(#ill-grad-1)" opacity="0.10"/>
+        <rect x="118" y="132" width="184" height="128" rx="14" fill="#2a1f40" stroke="url(#ill-grad-1)" stroke-width="2"/>
+        <circle cx="140" cy="152" r="4" fill="#ff6b9d"/>
+        <circle cx="154" cy="152" r="4" fill="#ffa3c7"/>
+        <circle cx="168" cy="152" r="4" fill="#8b5fbf"/>
+        <line x1="118" y1="166" x2="302" y2="166" stroke="#3d2f5c" stroke-width="1.5"/>
+        <polyline points="134,232 168,196 196,214 232,168 286,186" fill="none" stroke="url(#ill-grad-1)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="134" cy="232" r="5" fill="#ffa3c7"/>
+        <circle cx="168" cy="196" r="5" fill="#ffa3c7"/>
+        <circle cx="196" cy="214" r="5" fill="#ffa3c7"/>
+        <circle cx="232" cy="168" r="5" fill="#ff6b9d"/>
+        <circle cx="286" cy="186" r="6" fill="#ff6b9d"/>
+        <circle cx="90" cy="120" r="22" fill="url(#ill-grad-2)" opacity="0.85"/>
+        <circle cx="330" cy="290" r="30" fill="url(#ill-grad-1)" opacity="0.7"/>
+        <rect x="290" y="80" width="34" height="34" rx="9" fill="none" stroke="#8b5fbf" stroke-width="2.5" transform="rotate(18 307 97)"/>
+        <path d="M96 320c14-18 34-18 48 0" stroke="#ff6b9d" stroke-width="3" stroke-linecap="round" fill="none"/>
+      </svg>
     </div>
   </div>
+</section>
+
+<section id="tjenester">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Tjenester</h2>
+      <p class="section-sub">Alt en bedrift trenger for å bli funnet og valgt.</p>
+    </div>
+    <div class="services-grid reveal-stagger">
+      <div class="service-card reveal">
+        <span class="service-tag mono">NETTSIDER &amp; APPUTVIKLING</span>
+        <h3>Nettsider som konverterer</h3>
+        <p>Skreddersydde nettsider, mobilapper og bestillingsløsninger bygget for å gi flere henvendelser og bestillinger — ikke bare pynt på nett.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-tag mono">SEO &amp; SYNLIGHET</span>
+        <h3>Bli funnet på Google</h3>
+        <p>Teknisk SEO, lokal søkeoptimalisering og innhold som faktisk rangerer, tilpasset hvordan kundene deres søker.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-tag mono">AI &amp; AUTOMATISERING</span>
+        <h3>AI som faktisk fungerer</h3>
+        <p>Chatbots, automatisert kundedialog og optimalisering for AI-søk — bygget på praktisk erfaring med generativ AI (LLM, RAG og AI-agenter) fra enterprise-miljø, ikke bare teori.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-tag mono">IT-KONSULTING</span>
+        <h3>18+ års erfaring med digital leveranse</h3>
+        <p>Rådgivning og gjennomføring fra noen som har ledet IT-migreringer, plattformbytter og digitale transformasjonsprosjekter i store, internasjonale miljøer — nå tilgjengelig for din bedrift.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="om-oss">
+  <div class="wrap about-grid reveal-stagger">
+    <div class="reveal">
+      <h2 style="margin-bottom: 20px;">Om Devlyn</h2>
+      <p>Devlyn er et Oslo-basert IT- og konsulentselskap grunnlagt av en leveranseleder med 18+ års erfaring fra digital transformasjon, IT-migreringer og enterprise-leveranser i telekombransjen. Den samme strukturen og erfaringen brukes nå til å bygge nettsider, skape synlighet og levere digitale løsninger for små og mellomstore bedrifter. Vi jobber tett med hver enkelt kunde — ingen ferdigpakker, ingen bortforklaringer, og alltid en tydelig plan for hva som skal gjøres og hvorfor.</p>
+    </div>
+    <div class="stat-list reveal">
+      <div><b class="count-up" data-target="18" data-suffix="+">0</b><span>års erfaring med digital leveranse og IT-konsulting</span></div>
+      <div><b>Oslo</b><span>Basert i Oslo, jobber med kunder i hele Norge</span></div>
+      <div><b>Nettsider · SEO</b><span>For bedrifter som vil bli funnet og valgt online</span></div>
+      <div><b>Gratis analyse</b><span>Alltid en uforpliktende digital analyse først</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="grunnlegger">
+  <div class="wrap founder-grid reveal-stagger">
+    <div class="reveal">
+      <h2 style="margin-bottom: 6px;">Mannen bak Devlyn</h2>
+      <p class="founder-role mono">MARTIN ELOFSSON — GRUNNLEGGER</p>
+      <p class="founder-bio">Jeg har jobbet i 18+ år med å lede IT-leveranser, migreringsprosjekter og digitale transformasjoner i store, internasjonale telekom-miljøer. Den samme strukturen og erfaringen bruker jeg nå til å bygge og drifte nettsider for små og mellomstore bedrifter som vil bli funnet og valgt på nett — fra første idé, via lansering, til løpende drift og forbedring.</p>
+      <ul class="bring-list">
+        <li>18+ års erfaring med å lede IT-leveranser og digitale transformasjonsprosjekter i store, internasjonale miljøer</li>
+        <li>Sertifisert i PRINCE2, ITIL og Agile — med praktisk erfaring fra generativ AI (LLM, RAG, AI-agenter)</li>
+        <li>Du jobber direkte med meg — ingen mellomledd, ingen ferdigpakker, og jeg blir med videre etter lansering</li>
+      </ul>
+      <div class="skills">
+        <span class="skill-tag">Nettsider &amp; webutvikling</span>
+        <span class="skill-tag">SEO &amp; lokal synlighet</span>
+        <span class="skill-tag">IT-leveranseledelse &amp; prosjektstyring</span>
+        <span class="skill-tag">Generativ AI &amp; automatisering</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="referanser">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Kunder vi jobber med</h2>
+      <p class="section-sub">Et utvalg av bedrifter vi bygger og drifter nettsider for.</p>
+    </div>
+  </div>
+  <div class="client-marquee-wrap reveal">
+    <div class="client-marquee-track">
+      <div class="service-card">
+        <h3>Hammarströms Persienner &amp; Markiser</h3>
+        <p>Solskjerming i Trollhättan — persienner og markiser, over 50 års erfaring. <a href="https://hst.se" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600;">hst.se ↗</a></p>
+      </div>
+      <div class="service-card">
+        <h3>Fönsterinredarna Sverige AB</h3>
+        <p>Måttbeställda gardiner og solskjerming i Halmstad. <a href="https://fonsterinredarna.se" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600;">fonsterinredarna.se ↗</a></p>
+      </div>
+      <div class="service-card">
+        <h3>Uddevalla Markis &amp; Persienn</h3>
+        <p>Markiser, persienner og solskjerming i Uddevalla. <a href="https://uddevallamarkis.se" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600;">uddevallamarkis.se ↗</a></p>
+      </div>
+      <div class="service-card">
+        <h3>Solskyddsprodukter</h3>
+        <p>Innvendig og utvendig solskjerming i Vänersborg. <a href="https://solskyddsprodukter.net" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600;">solskyddsprodukter.net ↗</a></p>
+      </div>
+      <div class="service-card">
+        <h3>Solskyddsteknik</h3>
+        <p>Solskydd, markiser och persienner — Luxaflex-återförsäljare i Trollhättan och Västsverige. <a href="https://solskyddsteknik.se" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600;">solskyddsteknik.se ↗</a></p>
+      </div>
+      <div class="service-card">
+        <h3>Storgatans Elektriska</h3>
+        <p>Elektrikerfirma i Trollhättan sedan 1952 — installation, service och belysning. <a href="https://storgatansel.se" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600;">storgatansel.se ↗</a></p>
+      </div>
+      <!-- duplicated for seamless loop -->
+      <div class="service-card" aria-hidden="true">
+        <h3>Hammarströms Persienner &amp; Markiser</h3>
+        <p>Solskjerming i Trollhättan — persienner og markiser, over 50 års erfaring. <a href="https://hst.se" target="_blank" rel="noopener" tabindex="-1" style="color: var(--accent); font-weight: 600;">hst.se ↗</a></p>
+      </div>
+      <div class="service-card" aria-hidden="true">
+        <h3>Fönsterinredarna Sverige AB</h3>
+        <p>Måttbeställda gardiner og solskjerming i Halmstad. <a href="https://fonsterinredarna.se" target="_blank" rel="noopener" tabindex="-1" style="color: var(--accent); font-weight: 600;">fonsterinredarna.se ↗</a></p>
+      </div>
+      <div class="service-card" aria-hidden="true">
+        <h3>Uddevalla Markis &amp; Persienn</h3>
+        <p>Markiser, persienner og solskjerming i Uddevalla. <a href="https://uddevallamarkis.se" target="_blank" rel="noopener" tabindex="-1" style="color: var(--accent); font-weight: 600;">uddevallamarkis.se ↗</a></p>
+      </div>
+      <div class="service-card" aria-hidden="true">
+        <h3>Solskyddsprodukter</h3>
+        <p>Innvendig og utvendig solskjerming i Vänersborg. <a href="https://solskyddsprodukter.net" target="_blank" rel="noopener" tabindex="-1" style="color: var(--accent); font-weight: 600;">solskyddsprodukter.net ↗</a></p>
+      </div>
+      <div class="service-card" aria-hidden="true">
+        <h3>Solskyddsteknik</h3>
+        <p>Solskydd, markiser och persienner — Luxaflex-återförsäljare i Trollhättan och Västsverige. <a href="https://solskyddsteknik.se" target="_blank" rel="noopener" tabindex="-1" style="color: var(--accent); font-weight: 600;">solskyddsteknik.se ↗</a></p>
+      </div>
+      <div class="service-card" aria-hidden="true">
+        <h3>Storgatans Elektriska</h3>
+        <p>Elektrikerfirma i Trollhättan sedan 1952 — installation, service och belysning. <a href="https://storgatansel.se" target="_blank" rel="noopener" tabindex="-1" style="color: var(--accent); font-weight: 600;">storgatansel.se ↗</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="kontakt">
+  <div class="wrap">
+    <div class="contact-grid reveal-stagger">
+      <!-- Vänster sida: Text och kontaktinfo -->
+      <div class="reveal">
+        <h2 style="margin-bottom: 32px;">Klar for å ta nettsiden deres til neste nivå?</h2>
+        <p style="margin-bottom: 32px; line-height: 1.7; font-size: 1.05rem;">Send en e-post eller ring oss, så tar vi en uforpliktende prat om hvor dere står i dag og hva som kan gjøres.</p>
+
+        <blockquote style="border-left: 3px solid #ff6b9d; padding-left: 20px; margin: 32px 0; font-style: italic; color: var(--text-secondary); line-height: 1.6;">
+          "Vi fokuserer på reell forretningsverdi — løsninger som skaper målbar effekt for dine kunder og din virksomhet."
+        </blockquote>
+
+        <div style="margin-top: 40px;">
+          <div style="margin-bottom: 32px;">
+            <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); margin-bottom: 8px; font-weight: 600;">E-POST</div>
+            <a href="mailto:hei@devlyn.no" style="font-size: 1.2rem; color: #ff6b9d; text-decoration: none; font-weight: 600;">hei@devlyn.no</a>
+          </div>
+          <div style="margin-bottom: 32px;">
+            <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); margin-bottom: 8px; font-weight: 600;">TELEFON</div>
+            <a href="tel:+4747925454" style="font-size: 1.2rem; color: #ff6b9d; text-decoration: none; font-weight: 600;">479 25 454</a>
+          </div>
+          <div>
+            <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); margin-bottom: 8px; font-weight: 600;">ORG.NR</div>
+            <div style="font-size: 1.2rem; color: var(--text-primary); font-weight: 600;">938 487 073</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Høyre sida: Kontaktformulär -->
+      <form id="contactForm" class="contact-form-offset reveal" method="POST" action="https://formspree.io/f/xoevaywb">
+        <!-- Success message -->
+        <div id="successMessage" style="display: none; margin-bottom: 20px; padding: 16px; background: rgba(75, 192, 192, 0.1); border: 1px solid rgba(75, 192, 192, 0.3); border-radius: 6px; color: #4bc0c0; font-size: 0.95rem;">
+          ✓ Takk! Vi mottar meldingen din og kontakter deg snart.
+        </div>
+
+        <div style="margin-bottom: 24px;">
+          <label class="form-label-row" style="margin-bottom: 15px; font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">
+            <span>Navn *</span>
+          <input type="text" name="navn" style="flex: 1; width: 100%; padding: 12px; border: 1px solid rgba(139, 95, 191, 0.2); border-radius: 6px; background: var(--bg-primary); color: var(--text-primary); font-family: inherit; font-size: 1rem;" required>
+          </label>
+          <span style="font-size: 0.85rem; color: #ff6b9d; margin-top: 4px; display: block;"></span>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+          <label class="form-label-row" style="margin-bottom: 15px; font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">
+            <span>E-post *</span>
+          <input type="email" name="epost" style="flex: 1; width: 100%; padding: 12px; border: 1px solid rgba(139, 95, 191, 0.2); border-radius: 6px; background: var(--bg-primary); color: var(--text-primary); font-family: inherit; font-size: 1rem;" required>
+          </label>
+          <span style="font-size: 0.85rem; color: #ff6b9d; margin-top: 4px; display: block;"></span>
+        </div>
+
+        <div style="margin-bottom: 32px;">
+          <label class="form-label-row" style="margin-bottom: 15px; font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">
+            <span>Hva jobber dere med? *</span>
+          <textarea name="melding" style="flex: 1; width: 100%; padding: 12px; border: 1px solid rgba(139, 95, 191, 0.2); border-radius: 6px; background: var(--bg-primary); color: var(--text-primary); font-family: inherit; min-height: 120px; resize: vertical; font-size: 1rem;" placeholder="Et par setninger om kontekst, problem eller idé." required></textarea>
+          </label>
+          <span style="font-size: 0.85rem; color: #ff6b9d; margin-top: 4px; display: block;"></span>
+        </div>
+
+        <button type="submit" style="background: linear-gradient(135deg, #8b5fbf, #ff6b9d); color: white; border: none; padding: 14px 32px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 1rem; transition: transform 0.2s ease; width: 100%;">Send melding →</button>
+
+        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 20px; line-height: 1.6;">Vi leser gjennom henvendelsen og tar kontakt så snart vi kan. Første samtale er alltid uforpliktende.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<footer class="wrap" style="justify-content: center;">
+  <span>© 2026 Devlyn</span>
+</footer>
+
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const form = this;
+    const formData = new FormData(form);
+
+    fetch('https://formspree.io/f/xoevaywb', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        document.getElementById('successMessage').style.display = 'block';
+        form.reset();
+        setTimeout(() => {
+          document.getElementById('successMessage').style.display = 'none';
+        }, 5000);
+      }
+    })
+    .catch(error => {
+      console.error('Fel ved sending:', error);
+      alert('Noe gikk galt. Prøv igjen eller kontakt oss på hei@devlyn.no');
+    });
+  });
+
+  // --- Fancy scroll/interaction layer -------------------------------------
+  (function () {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+    // Scroll progress bar + header shadow state
+    const progressBar = document.querySelector('.scroll-progress');
+    const headerEl = document.querySelector('header');
+    function onScroll() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      if (progressBar) progressBar.style.width = pct + '%';
+      if (headerEl) headerEl.classList.toggle('scrolled', scrollTop > 10);
+    }
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => { onScroll(); ticking = false; });
+        ticking = true;
+      }
+    });
+    onScroll();
+
+    // Reveal-on-scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      revealEls.forEach(el => el.classList.add('is-visible'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+      revealEls.forEach(el => io.observe(el));
+    }
+
+    // Count-up stat (e.g. "18+ års erfaring") — plays once when scrolled into view
+    const counters = document.querySelectorAll('.count-up');
+    if (counters.length) {
+      const animateCounter = (el) => {
+        const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+        const suffix = el.getAttribute('data-suffix') || '';
+        const duration = 1300;
+        const start = performance.now();
+        function tick(now) {
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(eased * target) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      };
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        counters.forEach(el => { el.textContent = (el.getAttribute('data-target') || '0') + (el.getAttribute('data-suffix') || ''); });
+      } else {
+        const counterIo = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+              counterIo.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.6 });
+        counters.forEach(el => counterIo.observe(el));
+      }
+    }
+
+    if (reduceMotion || !finePointer) return;
+
+    // Subtle 3D tilt on cards
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = `translateY(-4px) rotateX(${(-py * 6).toFixed(2)}deg) rotateY(${(px * 6).toFixed(2)}deg)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  })();
+</script>
+
 </body>
 </html>
