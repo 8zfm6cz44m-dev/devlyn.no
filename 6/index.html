@@ -215,13 +215,6 @@
 
     .avatar-wrap { position: relative; width: 200px; height: 200px; }
     @media (max-width: 760px) { .avatar-wrap { width: 168px; height: 168px; } }
-    .avatar-ring {
-      position: absolute; inset: -10px; border-radius: 50%;
-      background: conic-gradient(from 140deg, var(--primary-light), var(--accent), var(--primary-light));
-      opacity: 0.55; filter: blur(2px);
-      animation: spinSlow 16s linear infinite;
-    }
-    @keyframes spinSlow { to { transform: rotate(360deg); } }
     .avatar {
       position: relative; width: 200px; height: 200px; border-radius: 50%;
       background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--accent));
@@ -230,10 +223,6 @@
       border: 3px solid var(--bg-primary);
     }
     @media (max-width: 760px) { .avatar, .avatar-wrap > .avatar { width: 168px; height: 168px; font-size: 2.4rem; } }
-    .avatar-note {
-      margin-top: 14px; font-size: 0.72rem; color: var(--text-secondary); max-width: 200px;
-      font-family: 'IBM Plex Mono', ui-monospace, monospace; opacity: 0.7;
-    }
 
     .founder-name { font-size: 1.5rem; font-weight: 700; margin: 0 0 4px; letter-spacing: -0.01em; }
     .founder-role { color: var(--accent); font-size: 0.9rem; font-weight: 600; margin: 0 0 20px; }
@@ -317,7 +306,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; }
-      .hero::before, .avatar-ring, .eyebrow::before, h1, .client-marquee-track { animation: none !important; }
+      .hero::before, .eyebrow::before, h1, .client-marquee-track { animation: none !important; }
       .service-card, .btn-primary::before, header { transition: none !important; }
       .client-marquee-wrap { overflow-x: auto; }
     }
@@ -449,10 +438,8 @@
   <div class="wrap founder-grid reveal-stagger">
     <div class="reveal" style="display:flex; flex-direction:column; align-items:center;">
       <div class="avatar-wrap">
-        <div class="avatar-ring"></div>
         <div class="avatar">ME</div>
       </div>
-      <span class="avatar-note">Bilde av Martin legges inn her</span>
     </div>
     <div class="reveal">
       <h2 style="margin-bottom: 6px;">Mannen bak Devlyn</h2>
