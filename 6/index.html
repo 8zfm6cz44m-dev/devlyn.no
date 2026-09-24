@@ -210,19 +210,7 @@
     .stat-list div span { color: var(--text-secondary); font-size: 0.9rem; }
 
     /* Grunnlegger / founder section */
-    .founder-grid { display: grid; grid-template-columns: 240px 1fr; gap: 52px; align-items: start; }
-    @media (max-width: 760px) { .founder-grid { grid-template-columns: 1fr; justify-items: center; text-align: center; } }
-
-    .avatar-wrap { position: relative; width: 200px; height: 200px; }
-    @media (max-width: 760px) { .avatar-wrap { width: 168px; height: 168px; } }
-    .avatar {
-      position: relative; width: 200px; height: 200px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--accent));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3rem; font-weight: 700; color: #fff; letter-spacing: -0.02em;
-      border: 3px solid var(--bg-primary);
-    }
-    @media (max-width: 760px) { .avatar, .avatar-wrap > .avatar { width: 168px; height: 168px; font-size: 2.4rem; } }
+    .founder-grid { display: grid; grid-template-columns: 1fr; gap: 52px; align-items: start; max-width: 68ch; }
 
     .founder-name { font-size: 1.5rem; font-weight: 700; margin: 0 0 4px; letter-spacing: -0.01em; }
     .founder-role { color: var(--accent); font-size: 0.9rem; font-weight: 600; margin: 0 0 20px; }
@@ -436,11 +424,6 @@
 
 <section id="grunnlegger">
   <div class="wrap founder-grid reveal-stagger">
-    <div class="reveal" style="display:flex; flex-direction:column; align-items:center;">
-      <div class="avatar-wrap">
-        <div class="avatar">ME</div>
-      </div>
-    </div>
     <div class="reveal">
       <h2 style="margin-bottom: 6px;">Mannen bak Devlyn</h2>
       <p class="founder-role mono">MARTIN ELOFSSON — GRUNNLEGGER</p>
